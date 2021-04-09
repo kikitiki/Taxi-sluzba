@@ -1,4 +1,4 @@
-package korisnike;
+package korisnici;
 
 public class Korisnik {
     private String jmbg;
@@ -103,3 +103,7 @@ public class Korisnik {
                 '}';
     }
 }
+
+
+
+
