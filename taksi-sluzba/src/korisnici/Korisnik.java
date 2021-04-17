@@ -7,14 +7,18 @@ public class Korisnik {
     private String ime;
     private String prezime;
     private String adresa;
-    private String pol;
+    private Pol pol;
     private String brojTelefona;
+    private TipKorisnika tipKorisnika;
+
+
 
     public Korisnik(){
 
     }
 
-    public Korisnik(String jmbg, String korisnickoIme, String lozinka, String ime, String prezime, String adresa, String pol, String brojTelefona) {
+    public Korisnik(String jmbg, String korisnickoIme, String lozinka, String ime, String prezime, String adresa, Pol pol, String brojTelefona, TipKorisnika tipKorisnika) {
+        super();
         this.jmbg = jmbg;
         this.korisnickoIme = korisnickoIme;
         this.lozinka = lozinka;
@@ -23,6 +27,7 @@ public class Korisnik {
         this.adresa = adresa;
         this.pol = pol;
         this.brojTelefona = brojTelefona;
+        this.tipKorisnika = tipKorisnika;
     }
 
     public String getJmbg() {
@@ -73,11 +78,11 @@ public class Korisnik {
         this.adresa = adresa;
     }
 
-    public String getPol() {
+    public Pol getPol() {
         return pol;
     }
 
-    public void setPol(String pol) {
+    public void setPol(Pol pol) {
         this.pol = pol;
     }
 
@@ -89,6 +94,20 @@ public class Korisnik {
         this.brojTelefona = brojTelefona;
     }
 
+    public TipKorisnika getTipKorisnika() {
+        return tipKorisnika;
+    }
+
+    public void setTipKorisnika(TipKorisnika tipKorisnika) {
+        this.tipKorisnika = tipKorisnika;
+    }
+
+    public String formatrajZaUpis() {
+        String zaUpis = String.format("%s|%s|%s|%s|%s|%s|%s|%s|%s", this.getIme(), this.getPrezime(), this.getKorisnickoIme(), this.getLozinka(),
+                this.getAdresa(), this.getJmbg(), this.getPol(), this.getBrojTelefona(), this.getTipKorisnika());
+        return zaUpis;
+    }
+
     @Override
     public String toString() {
         return "Korisnik{" +
@@ -98,8 +117,9 @@ public class Korisnik {
                 ", ime='" + ime + '\'' +
                 ", prezime='" + prezime + '\'' +
                 ", adresa='" + adresa + '\'' +
-                ", pol='" + pol + '\'' +
+                ", pol=" + pol +
                 ", brojTelefona='" + brojTelefona + '\'' +
+                ", tipKorisnika=" + tipKorisnika +
                 '}';
     }
 }
