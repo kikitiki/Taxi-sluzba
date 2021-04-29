@@ -2,22 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="acbcea89-9652-4c59-b1c6-1d851b140c67" name="Default Changelist" comment="proba">
-      <change afterPath="$PROJECT_DIR$/taksi-sluzba/src/automobil/Automobil.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/taksi-sluzba/src/automobil/VrstaAutomobila.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/taksi-sluzba/src/fajlovi/automobili.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/taksi-sluzba/src/fajlovi/korisnici.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/taksi-sluzba/src/korisnici/Dispecer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/taksi-sluzba/src/korisnici/Odeljenje.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/taksi-sluzba/src/korisnici/Pol.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/taksi-sluzba/src/korisnici/TipKorisnika.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/taksi-sluzba/src/korisnici/Vozac.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/taksi-sluzba/src/main/Taxi_Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/taksi-sluzba/src/taxiSluzba/TaxiSluzba.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/taksi-sluzba/src/voznja/StatusVoznje.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/taksi-sluzba/src/voznja/Voznja.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/taksi-sluzba/src/korisnici/Korisnik.java" beforeDir="false" afterPath="$PROJECT_DIR$/taksi-sluzba/src/korisnici/Korisnik.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/taksi-sluzba/src/korisnici/Vozaci.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/taksi-sluzba/taksi-sluzba.iml" beforeDir="false" afterPath="$PROJECT_DIR$/taksi-sluzba/taksi-sluzba.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/taksi-sluzba/fajlovi/automobili.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/taksi-sluzba/fajlovi/automobili.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/taksi-sluzba/fajlovi/korisnici.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/taksi-sluzba/fajlovi/korisnici.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/taksi-sluzba/fajlovi/korisnici2.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/taksi-sluzba/src/automobil/Automobil.java" beforeDir="false" afterPath="$PROJECT_DIR$/taksi-sluzba/src/automobil/Automobil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/taksi-sluzba/src/fajlovi/automobili.txt" beforeDir="false" afterPath="$PROJECT_DIR$/taksi-sluzba/src/fajlovi/automobili.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/taksi-sluzba/src/fajlovi/korisnici.txt" beforeDir="false" afterPath="$PROJECT_DIR$/taksi-sluzba/src/fajlovi/korisnici.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/taksi-sluzba/src/korisnici/Vozac.java" beforeDir="false" afterPath="$PROJECT_DIR$/taksi-sluzba/src/korisnici/Vozac.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/taksi-sluzba/src/main/Taxi_Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/taksi-sluzba/src/main/Taxi_Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/taksi-sluzba/src/taxiSluzba/TaxiSluzba.java" beforeDir="false" afterPath="$PROJECT_DIR$/taksi-sluzba/src/taxiSluzba/TaxiSluzba.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/taksi-sluzba/src/voznja/Voznja.java" beforeDir="false" afterPath="$PROJECT_DIR$/taksi-sluzba/src/voznja/Voznja.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,7 +51,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="jdk.selected.JAVA_MODULE" value="11" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/taksi-sluzba/src/fajlovi" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../KontrolnaTacka1" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -131,11 +126,10 @@
           <properties field="korisnickoIme" class="korisnike.Korisnik" />
           <option name="timeStamp" value="1" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/taksi-sluzba/src/taxiSluzba/TaxiSluzba.java</url>
-          <line>124</line>
-          <option name="timeStamp" value="4" />
-        </line-breakpoint>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.NullPointerException" package="java.lang" />
+          <option name="timeStamp" value="5" />
+        </breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>

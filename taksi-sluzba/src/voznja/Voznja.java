@@ -3,6 +3,7 @@ package voznja;
 import korisnici.Korisnik;
 import korisnici.Vozac;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Voznja {
@@ -91,6 +92,16 @@ public class Voznja {
 
     public void setVozaci(Vozac vozaci) {
         this.vozac = vozaci;
+    }
+
+    public String formatirajZaUpis() {
+
+        SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy HH:mm");
+        String datumFormatiran = formatter.format(datumKreirnja);
+        String zaUpis = String.format("%s|%s|%s|%s|%s|%s|%s|%s",datumFormatiran,this.adresaPolaska,this.adresaDestinacije,
+                this.status,this.brojKM,this.trajanjeVoznje,this.musterija.getKorisnickoIme(),this.vozac.getKorisnickoIme());
+
+        return zaUpis;
     }
 
     @Override

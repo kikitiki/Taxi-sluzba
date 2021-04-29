@@ -50,7 +50,7 @@ public class Vozac extends Korisnik {
     @Override
     public String toString() {
 
-        return "Vozaci{" +
+        return "Vozac{" +
                 "brojClanskeKarte='" + brojClanskeKarte + '\'' +
                 ", plata=" + plata +
                 ", taxi=" + taxi +

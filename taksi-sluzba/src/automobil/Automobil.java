@@ -69,9 +69,15 @@ public class Automobil {
         this.godinaProizvodnje = godinaProizvodnje;
     }
 
+    public String formatirajZaUpisAutomobila(){
+        String zaUpis = String.format("%s|%s|%s|%s|%s|%s|", this.getBrojTaksiVozila(),this.getModel(),this.getProizvodjac(),this.getRegistracija(),
+                this.getTipAutomobila(),this.getGodinaProizvodnje());
+        return zaUpis;
+    }
+
     @Override
     public String toString() {
-        return "Automobili{" +
+        return "Automobil{" +
                 "brojTaksiVozila='" + brojTaksiVozila + '\'' +
                 ", model='" + model + '\'' +
                 ", proizvodjac='" + proizvodjac + '\'' +

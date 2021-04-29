@@ -3,10 +3,16 @@ package taxiSluzba;
 import automobil.Automobil;
 import automobil.VrstaAutomobila;
 import korisnici.*;
+import voznja.StatusVoznje;
 import voznja.Voznja;
 
 import java.io.*;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class TaxiSluzba {
@@ -58,6 +64,10 @@ public class TaxiSluzba {
             String line;
             while ((line = reader.readLine()) != null) {
 
+                // ako ucitamo liniju koja je prazna -> prekini ucitavanje i izadji iz While petlje
+                if (line.equals("")) {
+                    break;
+                }
                 String[] splitovano = line.split("\\|");
 
                 String ime = splitovano[0];
@@ -109,6 +119,7 @@ public class TaxiSluzba {
             reader.close();
 
         } catch (FileNotFoundException e) {
+            System.out.println("Greska prilikom snimanja podataka o korisnicima");
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
@@ -118,7 +129,59 @@ public class TaxiSluzba {
     }
 
     public void ucitajVoznje(String nazivFajla) {
+        File file = new File(nazivFajla);
+        try {
+            BufferedReader reader= new BufferedReader(new FileReader(file));
+            String line;
 
+            while ((line = reader.readLine()) != null) {
+
+                if(line.equals("")){
+                    break;
+                }
+
+                String[] splitovano = line.split("\\|");
+                SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy HH:mm");
+
+
+                String datum = splitovano[0];
+                Date date = formatter.parse(datum);
+                String adresaPolaska = splitovano[1];
+                String adresaDestinacije = splitovano[2];
+                String statusVoznjeString = splitovano[3];
+                String brKmString = splitovano[4];
+                String trajanjeVoznjeString = splitovano[5];
+                // ucitavamo ID-eve musterije i vozaca
+                String musterijaKorisnickoIme = splitovano[6];
+                String vozacKorisnickoIme = splitovano[7];
+                StatusVoznje statusVoznje = StatusVoznje.valueOf(statusVoznjeString);
+
+                double brKm = Double.parseDouble(brKmString);
+                int trajanje = Integer.parseInt(trajanjeVoznjeString);
+
+                Korisnik musterija = null;
+                Vozac vozac = null;
+
+                for (Korisnik korisnik : sviKorisnici) {
+                    if (korisnik.getKorisnickoIme().equalsIgnoreCase(musterijaKorisnickoIme)) {
+                        musterija = korisnik;
+                    } else if (korisnik.getKorisnickoIme().equalsIgnoreCase(vozacKorisnickoIme)) {
+                        vozac = (Vozac) korisnik;
+                    }
+                }
+
+                Voznja voznja = new Voznja(date,adresaPolaska,adresaDestinacije,statusVoznje,brKm,trajanje, musterija ,vozac);
+                sveVoznje.add(voznja);
+            }
+        } catch (FileNotFoundException e) {
+            System.out.println("Greska prilikom snimanja podataka o voznji");
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ParseException e) {
+            e.printStackTrace();
+            System.out.println("Pogresan format datuma u fajlu iz kog se ucitava... Datum mora biti u formatu [dd-MM-yyyy HH:mm]");
+        }
     }
 
     public void ucitajAutomobile(String nazivFajla) {
@@ -127,6 +190,11 @@ public class TaxiSluzba {
             BufferedReader reader = new BufferedReader(new FileReader(file));
             String line;
             while ((line = reader.readLine()) != null) {
+
+                if (line.equals("")){
+                    break;
+                }
+
                 String[] splitovano = line.split("\\|");
                 String brojTaxiVozila = splitovano[0];
                 String model = splitovano[1];
@@ -143,6 +211,7 @@ public class TaxiSluzba {
 
             reader.close();
         } catch (FileNotFoundException e) {
+            System.out.println("Greska prilikom snimanja podataka o automobilu");
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
@@ -171,15 +240,49 @@ public class TaxiSluzba {
             writer.write(zaIspis);
             writer.close();
         } catch (IOException e) {
+            System.out.println("Greska prilikom cuvanja podataka o korisniku");
             e.printStackTrace();
         }
     }
 
-    public void sacuvajVoznje() {
+
+    public void sacuvajAutomobile(String nazivFajla) {
+        File file = new File(nazivFajla);
+        try {
+            BufferedWriter writer = new BufferedWriter(new FileWriter(file));
+            String zaIspis = "";
+            for (Automobil automobil: sviAutomobili){
+                zaIspis = zaIspis + automobil.formatirajZaUpisAutomobila() + "\n";
+            }
+
+            writer.write(zaIspis);
+            writer.close();
+        } catch (IOException e) {
+            System.out.println("Greska prilikom cuvanja podatak o automobilima");
+            e.printStackTrace();
+        }
 
     }
 
-    public void sacuvajAutomobile() {
+    public void sacuvajVoznje(String nazivFajla) {
+        File file = new File(nazivFajla);
+
+        try {
+            BufferedWriter writer = new BufferedWriter(new FileWriter(file));
+            String zaIspis = "";
+            for (Voznja voznja :sveVoznje){
+                zaIspis = zaIspis + voznja.formatirajZaUpis() + "\n";
+            }
+
+            writer.write(zaIspis);
+            writer.close();
+        } catch (IOException e) {
+            System.out.println("Greska prilikom cuvanja podataka o voznji");
+            e.printStackTrace();
+        }
+
 
     }
+
+
 }
