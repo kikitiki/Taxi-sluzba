@@ -1,0 +1,4 @@
+29-04-2021 22:48|adresa polaska|destiancija|KREIRANA|50.0|30|alek|ana
+29-04-2021 22:54|adresa polaska|destiancija|KREIRANA|50.0|30|alek|ana
+29-04-2021 23:01|adresa polaska|destiancija|KREIRANA|50.0|30|alek|ana
+29-04-2021 23:01|Kisacka 15|Vrsacka 11|KREIRANA_NA_CEKANJU|15.15|20|iva|ana

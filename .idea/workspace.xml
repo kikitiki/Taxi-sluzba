@@ -5,14 +5,12 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/taksi-sluzba/fajlovi/automobili.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/taksi-sluzba/fajlovi/automobili.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/taksi-sluzba/fajlovi/korisnici.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/taksi-sluzba/fajlovi/korisnici.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/taksi-sluzba/fajlovi/korisnici2.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/taksi-sluzba/src/automobil/Automobil.java" beforeDir="false" afterPath="$PROJECT_DIR$/taksi-sluzba/src/automobil/Automobil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/taksi-sluzba/fajlovi/voznje.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/taksi-sluzba/fajlovi/voznje.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/taksi-sluzba/src/fajlovi/automobili.txt" beforeDir="false" afterPath="$PROJECT_DIR$/taksi-sluzba/src/fajlovi/automobili.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/taksi-sluzba/src/fajlovi/korisnici.txt" beforeDir="false" afterPath="$PROJECT_DIR$/taksi-sluzba/src/fajlovi/korisnici.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/taksi-sluzba/src/korisnici/Vozac.java" beforeDir="false" afterPath="$PROJECT_DIR$/taksi-sluzba/src/korisnici/Vozac.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/taksi-sluzba/src/fajlovi/voznje.txt" beforeDir="false" afterPath="$PROJECT_DIR$/taksi-sluzba/src/fajlovi/voznje.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/taksi-sluzba/src/main/Taxi_Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/taksi-sluzba/src/main/Taxi_Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/taksi-sluzba/src/taxiSluzba/TaxiSluzba.java" beforeDir="false" afterPath="$PROJECT_DIR$/taksi-sluzba/src/taxiSluzba/TaxiSluzba.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/taksi-sluzba/src/voznja/Voznja.java" beforeDir="false" afterPath="$PROJECT_DIR$/taksi-sluzba/src/voznja/Voznja.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

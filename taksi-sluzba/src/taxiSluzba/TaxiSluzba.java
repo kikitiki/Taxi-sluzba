@@ -100,8 +100,7 @@ public class TaxiSluzba {
                     String taxiString = splitovano[11];
 
                     double plata = Double.parseDouble(plataString);
-                    // pozovi metodu koja iz liste svih automobila pronalazi automobil sa oznakom taxiString
-                    // i prosledi taj automobil u konstruktor Vozac u liniji ispod gde se kreira korisnik
+
 
                     Automobil taxi = null;
                     for (Automobil automobil : sviAutomobili) {
