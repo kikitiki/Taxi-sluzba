@@ -12,12 +12,21 @@ public class Dispecer extends Korisnik {
         this.odeljenje = odeljenje;
     }
 
+    public Dispecer(String jmbg, String korisnickoIme, String lozinka, String ime, String prezime, String adresa, Pol pol, String brojTelefona, double plata, String brojTelefonaLinije, Odeljenje odeljenje,TipKorisnika tipKorisnika, boolean obrisan) {
+        super(jmbg, korisnickoIme, lozinka, ime, prezime, adresa, pol, brojTelefona,tipKorisnika, obrisan);
+        this.plata = plata;
+        this.brojTelefonaLinije = brojTelefonaLinije;
+        this.odeljenje = odeljenje;
+    }
+
     public Dispecer(String jmbg, String korisnickoIme, String lozinka, String ime, String prezime, String adresa, Pol pol, String brojTelefona, double plata, String brojTelefonaLinije, Odeljenje odeljenje,TipKorisnika tipKorisnika) {
         super(jmbg, korisnickoIme, lozinka, ime, prezime, adresa, pol, brojTelefona,tipKorisnika);
         this.plata = plata;
         this.brojTelefonaLinije = brojTelefonaLinije;
         this.odeljenje = odeljenje;
     }
+
+
 
     public double getPlata() {
         return plata;

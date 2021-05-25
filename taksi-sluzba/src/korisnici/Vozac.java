@@ -16,6 +16,13 @@ public class Vozac extends Korisnik {
         this.plata=0;
     }
 
+    public Vozac(String jmbg, String korisnickoIme, String lozinka, String ime, String prezime, String adresa, Pol pol, String brojTelefona, String brojClanskeKarte, double plata, Automobil taxi,TipKorisnika tipKorisnika, boolean obrisan) {
+        super(jmbg, korisnickoIme, lozinka, ime, prezime, adresa, pol, brojTelefona,tipKorisnika, obrisan);
+        this.brojClanskeKarte = brojClanskeKarte;
+        this.plata = plata;
+        this.taxi = taxi;
+    }
+
     public Vozac(String jmbg, String korisnickoIme, String lozinka, String ime, String prezime, String adresa, Pol pol, String brojTelefona, String brojClanskeKarte, double plata, Automobil taxi,TipKorisnika tipKorisnika) {
         super(jmbg, korisnickoIme, lozinka, ime, prezime, adresa, pol, brojTelefona,tipKorisnika);
         this.brojClanskeKarte = brojClanskeKarte;

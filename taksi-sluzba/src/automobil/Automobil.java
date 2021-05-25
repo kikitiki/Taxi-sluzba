@@ -2,23 +2,27 @@ package automobil;
 
 
 public class Automobil {
+    private int id;
     private String brojTaksiVozila;
     private String model;
     private String proizvodjac;
     private String registracija;
     private VrstaAutomobila tipAutomobila;
     private int godinaProizvodnje;
+    private boolean obrisan = false;
 
     public Automobil() {
     }
 
-    public Automobil(String brojTaksiVozila, String model, String proizvodjac, String registracija, VrstaAutomobila tipAutomobila, int godinaProizvodnje) {
+    public Automobil(int id, String brojTaksiVozila, String model, String proizvodjac, String registracija, VrstaAutomobila tipAutomobila, int godinaProizvodnje, boolean obrisan) {
         this.brojTaksiVozila = brojTaksiVozila;
         this.model = model;
         this.proizvodjac = proizvodjac;
         this.registracija = registracija;
         this.tipAutomobila = tipAutomobila;
         this.godinaProizvodnje = godinaProizvodnje;
+        this.obrisan = obrisan;
+        this.id = id;
     }
 
     public String getBrojTaksiVozila() {
@@ -69,9 +73,25 @@ public class Automobil {
         this.godinaProizvodnje = godinaProizvodnje;
     }
 
+    public boolean isObrisan() {
+        return obrisan;
+    }
+
+    public void setObrisan(boolean obrisan) {
+        this.obrisan = obrisan;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public String formatirajZaUpisAutomobila(){
-        String zaUpis = String.format("%s|%s|%s|%s|%s|%s|", this.getBrojTaksiVozila(),this.getModel(),this.getProizvodjac(),this.getRegistracija(),
-                this.getTipAutomobila(),this.getGodinaProizvodnje());
+        String zaUpis = String.format("%s|%s|%s|%s|%s|%s|%s|%s",this.getId(), this.getBrojTaksiVozila(),this.getModel(),this.getProizvodjac(),this.getRegistracija(),
+                this.getTipAutomobila(),this.getGodinaProizvodnje(), this.isObrisan());
         return zaUpis;
     }
 

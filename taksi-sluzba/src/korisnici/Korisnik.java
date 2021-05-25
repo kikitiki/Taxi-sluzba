@@ -10,11 +10,26 @@ public class Korisnik {
     private Pol pol;
     private String brojTelefona;
     private TipKorisnika tipKorisnika;
+    private boolean obrisan = false;
 
 
 
     public Korisnik(){
 
+    }
+
+    public Korisnik(String jmbg, String korisnickoIme, String lozinka, String ime, String prezime, String adresa, Pol pol, String brojTelefona, TipKorisnika tipKorisnika, boolean obrisan) {
+        super();
+        this.jmbg = jmbg;
+        this.korisnickoIme = korisnickoIme;
+        this.lozinka = lozinka;
+        this.ime = ime;
+        this.prezime = prezime;
+        this.adresa = adresa;
+        this.pol = pol;
+        this.brojTelefona = brojTelefona;
+        this.tipKorisnika = tipKorisnika;
+        this.obrisan = obrisan;
     }
 
     public Korisnik(String jmbg, String korisnickoIme, String lozinka, String ime, String prezime, String adresa, Pol pol, String brojTelefona, TipKorisnika tipKorisnika) {
@@ -28,6 +43,7 @@ public class Korisnik {
         this.pol = pol;
         this.brojTelefona = brojTelefona;
         this.tipKorisnika = tipKorisnika;
+
     }
 
     public String getJmbg() {
@@ -103,9 +119,17 @@ public class Korisnik {
     }
 
     public String formatrajZaUpis() {
-        String zaUpis = String.format("%s|%s|%s|%s|%s|%s|%s|%s|%s", this.getIme(), this.getPrezime(), this.getKorisnickoIme(), this.getLozinka(),
-                this.getAdresa(), this.getJmbg(), this.getPol(), this.getBrojTelefona(), this.getTipKorisnika());
+        String zaUpis = String.format("%s|%s|%s|%s|%s|%s|%s|%s|%s|%s", this.getIme(), this.getPrezime(), this.getKorisnickoIme(), this.getLozinka(),
+                this.getAdresa(), this.getJmbg(), this.getPol(), this.getBrojTelefona(), this.getTipKorisnika(), this.isObrisan());
         return zaUpis;
+    }
+
+    public boolean isObrisan() {
+        return obrisan;
+    }
+
+    public void setObrisan(boolean obrisan) {
+        this.obrisan = obrisan;
     }
 
     @Override
