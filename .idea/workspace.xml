@@ -2,25 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="acbcea89-9652-4c59-b1c6-1d851b140c67" name="Default Changelist" comment="proba">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/com_miglayout_miglayout_swing_4_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/com_miglayout_miglayout_swing_4_21.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/taksi-sluzba/src/voznja/TipKreiraneVoznje.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/taksi-sluzba/fajlovi/automobili.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/taksi-sluzba/fajlovi/automobili.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/taksi-sluzba/fajlovi/korisnici.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/taksi-sluzba/fajlovi/korisnici.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/taksi-sluzba/fajlovi/voznje.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/taksi-sluzba/fajlovi/voznje.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/taksi-sluzba/src/automobil/Automobil.java" beforeDir="false" afterPath="$PROJECT_DIR$/taksi-sluzba/src/automobil/Automobil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/taksi-sluzba/src/fajlovi/automobili.txt" beforeDir="false" afterPath="$PROJECT_DIR$/taksi-sluzba/src/fajlovi/automobili.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/taksi-sluzba/src/fajlovi/korisnici.txt" beforeDir="false" afterPath="$PROJECT_DIR$/taksi-sluzba/src/fajlovi/korisnici.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/taksi-sluzba/src/fajlovi/voznje.txt" beforeDir="false" afterPath="$PROJECT_DIR$/taksi-sluzba/src/fajlovi/voznje.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/taksi-sluzba/src/korisnici/Dispecer.java" beforeDir="false" afterPath="$PROJECT_DIR$/taksi-sluzba/src/korisnici/Dispecer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/taksi-sluzba/src/korisnici/Korisnik.java" beforeDir="false" afterPath="$PROJECT_DIR$/taksi-sluzba/src/korisnici/Korisnik.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/taksi-sluzba/src/korisnici/Vozac.java" beforeDir="false" afterPath="$PROJECT_DIR$/taksi-sluzba/src/korisnici/Vozac.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/taksi-sluzba/src/gui/LoginProzor.java" beforeDir="false" afterPath="$PROJECT_DIR$/taksi-sluzba/src/gui/LoginProzor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/taksi-sluzba/src/main/Taxi_Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/taksi-sluzba/src/main/Taxi_Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/taksi-sluzba/src/taxiSluzba/TaxiSluzba.java" beforeDir="false" afterPath="$PROJECT_DIR$/taksi-sluzba/src/taxiSluzba/TaxiSluzba.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/taksi-sluzba/src/voznja/Voznja.java" beforeDir="false" afterPath="$PROJECT_DIR$/taksi-sluzba/src/voznja/Voznja.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/taksi-sluzba/taksi-sluzba.iml" beforeDir="false" afterPath="$PROJECT_DIR$/taksi-sluzba/taksi-sluzba.iml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,8 +20,8 @@
       <list>
         <option value="Python Script" />
         <option value="module-info" />
-        <option value="Class" />
         <option value="Enum" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -148,6 +136,10 @@
         <breakpoint enabled="true" type="java-exception">
           <properties class="java.util.InputMismatchException" package="java.util" />
           <option name="timeStamp" value="6" />
+        </breakpoint>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.IndexOutOfBoundsException" package="java.lang" />
+          <option name="timeStamp" value="8" />
         </breakpoint>
       </breakpoints>
     </breakpoint-manager>

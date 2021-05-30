@@ -58,7 +58,10 @@ public class LoginProzor extends JFrame{
                     if (ulogovaniKorisnik == null) {
                         JOptionPane.showMessageDialog(null, "Pogresni kredencijali!", "Greska", JOptionPane.ERROR_MESSAGE);
                     } else {
-                        JOptionPane.showMessageDialog(null, "Uspesno ste se ulogovali " + ulogovaniKorisnik.getKorisnickoIme(), "Uspesan Login!", JOptionPane.INFORMATION_MESSAGE);
+                        LoginProzor.this.dispose();
+                        LoginProzor.this.setVisible(false);
+                        GlavniProzor gp = new GlavniProzor(taxiSluzba,ulogovaniKorisnik);
+                        gp.setVisible(true);
 
                     }
                 }

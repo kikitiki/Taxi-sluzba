@@ -124,6 +124,8 @@ public class Voznja {
         this.tipKreiraneVoznje = tipKreiraneVoznje;
     }
 
+
+
     public String formatirajZaUpis() {
 
         SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy HH:mm");
