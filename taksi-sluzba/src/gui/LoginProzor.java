@@ -1,6 +1,7 @@
 package gui;
 
 import korisnici.Korisnik;
+import korisnici.TipKorisnika;
 import net.miginfocom.swing.MigLayout;
 import taxiSluzba.TaxiSluzba;
 
@@ -17,7 +18,7 @@ public class LoginProzor extends JFrame{
     private JButton bntOk = new JButton("OK");
     private JButton btnCancel = new JButton("Cancel");
     private TaxiSluzba taxiSluzba;
-    
+
     public LoginProzor(TaxiSluzba taxiSluzba){
         this.taxiSluzba = taxiSluzba;
         setTitle("Prijava");
@@ -60,8 +61,10 @@ public class LoginProzor extends JFrame{
                     } else {
                         LoginProzor.this.dispose();
                         LoginProzor.this.setVisible(false);
-                        GlavniProzor gp = new GlavniProzor(taxiSluzba,ulogovaniKorisnik);
+                        GlavniProzor gp = new GlavniProzor(ulogovaniKorisnik);
                         gp.setVisible(true);
+//                        PrijavljeniKorisnik pp = new PrijavljeniKorisnik(ulogovaniKorisnik);
+//                        pp.setVisible(true);
 
                     }
                 }

@@ -1,6 +1,10 @@
 package korisnici;
 
-public class Korisnik {
+import taxiSluzba.TaxiSluzba;
+
+import java.awt.event.ActionListener;
+
+public class Korisnik  implements Comparable<Korisnik>{
     private String jmbg;
     private String korisnickoIme;
     private String lozinka;
@@ -145,6 +149,11 @@ public class Korisnik {
                 ", brojTelefona='" + brojTelefona + '\'' +
                 ", tipKorisnika=" + tipKorisnika +
                 '}';
+    }
+
+    @Override
+    public int compareTo(Korisnik drugiKorisnik) {
+        return this.getKorisnickoIme().compareToIgnoreCase(drugiKorisnik.getKorisnickoIme());
     }
 }
 

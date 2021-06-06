@@ -2,10 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="acbcea89-9652-4c59-b1c6-1d851b140c67" name="Default Changelist" comment="proba">
+      <change afterPath="$PROJECT_DIR$/taksi-sluzba/src/gui/DispecerProzor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/taksi-sluzba/src/gui/VozaciForma.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/taksi-sluzba/src/gui/VozaciTabela.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/taksi-sluzba/src/gui/VoznjaTabela.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/taksi-sluzba/fajlovi/automobili.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/taksi-sluzba/fajlovi/automobili.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/taksi-sluzba/fajlovi/korisnici.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/taksi-sluzba/fajlovi/korisnici.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/taksi-sluzba/fajlovi/voznje.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/taksi-sluzba/fajlovi/voznje.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/taksi-sluzba/src/automobil/Automobil.java" beforeDir="false" afterPath="$PROJECT_DIR$/taksi-sluzba/src/automobil/Automobil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/taksi-sluzba/src/fajlovi/automobili.txt" beforeDir="false" afterPath="$PROJECT_DIR$/taksi-sluzba/src/fajlovi/automobili.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/taksi-sluzba/src/fajlovi/korisnici.txt" beforeDir="false" afterPath="$PROJECT_DIR$/taksi-sluzba/src/fajlovi/korisnici.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/taksi-sluzba/src/fajlovi/voznje.txt" beforeDir="false" afterPath="$PROJECT_DIR$/taksi-sluzba/src/fajlovi/voznje.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/taksi-sluzba/src/gui/GlavniProzor.java" beforeDir="false" afterPath="$PROJECT_DIR$/taksi-sluzba/src/gui/GlavniProzor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/taksi-sluzba/src/gui/LoginProzor.java" beforeDir="false" afterPath="$PROJECT_DIR$/taksi-sluzba/src/gui/LoginProzor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/taksi-sluzba/src/korisnici/Korisnik.java" beforeDir="false" afterPath="$PROJECT_DIR$/taksi-sluzba/src/korisnici/Korisnik.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/taksi-sluzba/src/main/Taxi_Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/taksi-sluzba/src/main/Taxi_Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/taksi-sluzba/src/taxiSluzba/TaxiSluzba.java" beforeDir="false" afterPath="$PROJECT_DIR$/taksi-sluzba/src/taxiSluzba/TaxiSluzba.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/taksi-sluzba/src/voznja/Voznja.java" beforeDir="false" afterPath="$PROJECT_DIR$/taksi-sluzba/src/voznja/Voznja.java" afterDir="false" />
@@ -53,7 +64,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="jdk.selected.JAVA_MODULE" value="11" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../KontrolnaTacka1" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../Uvod u objektno programiranje/ReferentniProjekat" />
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />

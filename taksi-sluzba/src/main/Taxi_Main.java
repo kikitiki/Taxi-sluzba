@@ -27,9 +27,67 @@ public class Taxi_Main {
         taxiSluzba.ucitajKorisnike(KORISNICI_FAJL);
         taxiSluzba.ucitajVoznje(VOZNJE_FAJL);
 
+        List<Automobil> pronadjiSlobodneAutomobile = taxiSluzba.pronadjiSlobodneAutomobile();
+        System.out.println(pronadjiSlobodneAutomobile);
+
+        Collections.sort(taxiSluzba.getSviAutomobili());
+        Collections.sort(taxiSluzba.getSveVoznje());
+        Collections.sort(taxiSluzba.getSviKorisnici());
+
+
+//        Collections.sort(taxiSluzba.getSviKorisnici());
+        for (Korisnik k : taxiSluzba.getSviKorisnici()) {
+            System.out.println(k.getKorisnickoIme());
+        }
+
+        Korisnik pronadjen = taxiSluzba.binarnaPretragaKorisnikaPoStringu(taxiSluzba.getSviKorisnici(),0,taxiSluzba.getSviKorisnici().size() - 1,"milan");
+        if (pronadjen !=null){
+            System.out.println(pronadjen.getKorisnickoIme());
+        }else {
+            System.out.println("Pogresno");
+        }
+
+        Voznja pronadjena = taxiSluzba.binarnaPretragaVoznjePoId(taxiSluzba.getSveVoznje(),0,taxiSluzba.getSveVoznje().size()-1,1);
+        if (pronadjena !=null){
+            System.out.println(pronadjena.getId());
+        }else {
+            System.out.println("Neuspesno");
+        }
+
+        for (Voznja a : taxiSluzba.getSveVoznje()) {
+            System.out.println(a.getId());
+        }
+        Collections.sort(taxiSluzba.getSveVoznje());
+
+
+
+
+        Automobil pronadjeni = taxiSluzba.binarnaPretragaAutomobilaPoId(taxiSluzba.getSviAutomobili(),0,taxiSluzba.getSviAutomobili().size(),8);
+        if (pronadjeni !=null){
+            System.out.println(pronadjeni);
+        }else {
+            System.out.println("Neuspeno");
+        }
+
+
+
+        for (Automobil a : taxiSluzba.getSviAutomobili()) {
+            System.out.println(a.getId());
+        }
+        Collections.sort(taxiSluzba.getSviAutomobili());
+
+        System.out.println("posle sortiranja.....");
+        for (Automobil a : taxiSluzba.getSviAutomobili()) {
+            System.out.println(a.getId());
+        }
+
+
+
+
+
         Scanner scanner = new Scanner(System.in);
 
-        LoginProzor lp = new LoginProzor(taxiSluzba);
+        LoginProzor lp = new LoginProzor(taxiSluzba);//taxiSluzba
         lp.setVisible(true);
 
         testirajKreiranjeVozaca(taxiSluzba, scanner);
@@ -305,5 +363,13 @@ public class Taxi_Main {
 
         taxiSluzba.dodeliVoznjuVozacu(korisnickoImeVozaca, id);
 
+    }
+
+    public static void testiraOdbijVoznju(TaxiSluzba taxiSluzba,Scanner scanner){
+        System.out.println("Odbijanje voznje:");
+        System.out.println("Unesite id voznje:");
+        int id = Integer.parseInt(scanner.nextLine());
+
+        TaxiSluzba.odbijVoznju(id);
     }
 }

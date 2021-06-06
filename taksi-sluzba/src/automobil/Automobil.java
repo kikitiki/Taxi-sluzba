@@ -1,7 +1,7 @@
 package automobil;
 
 
-public class Automobil {
+public class Automobil implements Comparable<Automobil> {
     private int id;
     private String brojTaksiVozila;
     private String model;
@@ -104,5 +104,18 @@ public class Automobil {
                 ", registracija='" + registracija + '\'' +
                 ", tipAutomobila=" + tipAutomobila +
                 '}';
+    }
+
+    @Override
+    public int compareTo(Automobil o) {
+        if (this.getId() < o.getId()) {
+            return -1;
+        } else if (this.getId() > o.getId()) {
+            return 1;
+        }
+        else {
+            return 0;
+        }
+       // return this.getId() - o.getId();
     }
 }

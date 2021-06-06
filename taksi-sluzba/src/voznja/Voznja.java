@@ -6,7 +6,7 @@ import korisnici.Vozac;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class Voznja {
+public class Voznja implements Comparable<Voznja>{
     private int id;
     private Date datumKreirnja;
     private String adresaPolaska;
@@ -126,7 +126,7 @@ public class Voznja {
 
 
 
-    public String formatirajZaUpis() {
+    public  String formatirajZaUpis() {
 
         SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy HH:mm");
         String datumFormatiran = formatter.format(datumKreirnja);
@@ -149,5 +149,17 @@ public class Voznja {
                 ", vozac=" + vozac +
                 ", tipKreiraneVoznje=" + tipKreiraneVoznje +
                 '}';
+    }
+
+    @Override
+    public int compareTo(Voznja drugaVoznja) {
+        if (this.getId() < drugaVoznja.getId()){
+            return -1;
+        }else if (this.getId() > drugaVoznja.getId()){
+            return 1;
+        }else {
+            return 0;
+        }
+
     }
 }

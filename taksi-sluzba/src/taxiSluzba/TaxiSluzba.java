@@ -14,18 +14,19 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
 public class TaxiSluzba {
 
-    private List<Korisnik> sviKorisnici = new ArrayList<Korisnik>();
-    private List<Automobil> sviAutomobili = new ArrayList<Automobil>();
-    private List<Voznja> sveVoznje = new ArrayList<Voznja>();
+    private static List<Korisnik> sviKorisnici = new ArrayList<Korisnik>();
+    private static List<Automobil> sviAutomobili = new ArrayList<Automobil>();
+    private static List<Voznja> sveVoznje = new ArrayList<Voznja>();
 
-    private String automobiliFajl;
-    private String voznjeFajl;
-    private String korisniciFajl;
+    private static String automobiliFajl;
+    private static String voznjeFajl;
+    private static String korisniciFajl;
 
     public TaxiSluzba() {
 
@@ -37,7 +38,7 @@ public class TaxiSluzba {
         this.korisniciFajl = korisniciFajl;
     }
 
-    public TaxiSluzba(List<Korisnik> sviKorisnici, List<Automobil> sviAutomobili, List<Voznja> sveVoznje) {
+    public  TaxiSluzba(List<Korisnik> sviKorisnici, List<Automobil> sviAutomobili, List<Voznja> sveVoznje) {
         this.sviKorisnici = sviKorisnici;
         this.sviAutomobili = sviAutomobili;
         this.sveVoznje = sveVoznje;
@@ -59,7 +60,7 @@ public class TaxiSluzba {
         this.sviAutomobili = sviAutomobili;
     }
 
-    public List<Voznja> getSveVoznje() {
+    public static List<Voznja> getSveVoznje() {
         return sveVoznje;
     }
 
@@ -115,6 +116,7 @@ public class TaxiSluzba {
 
                     double plata = Double.parseDouble(plataString);
 
+                    Collections.sort(sviAutomobili);
 
                     Automobil taxi = null;
                     for (Automobil automobil : sviAutomobili) {
@@ -240,7 +242,7 @@ public class TaxiSluzba {
 
     }
 
-    public void sacuvajKorisnike(String nazivFajla) {
+    public static void sacuvajKorisnike(String nazivFajla) {
         File file = new File(nazivFajla);
         try {
             BufferedWriter writer = new BufferedWriter(new FileWriter(file));
@@ -284,7 +286,7 @@ public class TaxiSluzba {
 
     }
 
-    public void sacuvajVoznje(String nazivFajla) {
+    public static void sacuvajVoznje(String nazivFajla) {
         File file = new File(nazivFajla);
 
         try {
@@ -329,8 +331,8 @@ public class TaxiSluzba {
         }
     }
 
-    public List<Vozac> dobaviVozace() {
-        List<Vozac> sviVozaci = new ArrayList<Vozac>();
+    public static ArrayList<Vozac> dobaviVozace() {
+        ArrayList<Vozac> sviVozaci = new ArrayList<Vozac>();
         for (Korisnik k : sviKorisnici) {
             if (k.getTipKorisnika().equals(TipKorisnika.VOZAC) && !k.isObrisan()) {
                 sviVozaci.add((Vozac) k);
@@ -339,7 +341,16 @@ public class TaxiSluzba {
         return sviVozaci;
     }
 
-    public Vozac obrisiVozaca(String brojClanskeKarte) {
+    public static Vozac pronadjiVozacaIzTabele(String jmbg){
+        for (Korisnik k : sviKorisnici) {
+            if (k.getJmbg().equals(jmbg) && !k.isObrisan()) {
+               return (Vozac) k  ;
+            }
+        }
+        return null;
+    }
+
+    public static Vozac obrisiVozaca(String brojClanskeKarte) {
         for (Korisnik k : sviKorisnici) {
             if (k.getTipKorisnika().equals(TipKorisnika.VOZAC) && !k.isObrisan()) {
                 Vozac vozac = (Vozac) k;
@@ -354,14 +365,17 @@ public class TaxiSluzba {
         return null;
     }
 
+
+
+
     public List<Automobil> pronadjiSlobodneAutomobile() {
         List<Automobil> sviSlobodniAutomobili = new ArrayList<Automobil>();
         List<Vozac> sviVozaci = dobaviVozace();
         for (Automobil a : sviAutomobili) {
             boolean automobilSlobodan = true;
             for (Vozac v : sviVozaci) {
-                if (a.getBrojTaksiVozila().equals(v.getTaxi().getBrojTaksiVozila())) {
-                    automobilSlobodan = false;
+                if (v.getTaxi().getBrojTaksiVozila().equals(a.getBrojTaksiVozila())) {
+                    automobilSlobodan =false;
                     break;
                 }
             }
@@ -448,7 +462,7 @@ public class TaxiSluzba {
         }
         return null;
     }
-    
+
     public Dispecer kreirajDispecera(String jmbg,String korisnickoIme,String lozinka,String ime,String prezime,String adresa,Pol pol,String brojTelefona,double plata,String brojTelefonaLinije,Odeljenje odeljenje){
         TipKorisnika tipKorisnika = TipKorisnika.DISPECER;
         Dispecer noviDispecer = new Dispecer(jmbg,korisnickoIme,lozinka,ime,prezime,adresa,pol,brojTelefona,plata,brojTelefonaLinije,odeljenje,tipKorisnika);
@@ -489,6 +503,65 @@ public class TaxiSluzba {
     }
 
 
+    public Automobil binarnaPretragaAutomobilaPoId(List<Automobil> automobili,int levi,int desni,int id){
+        if (desni >= levi){
+            int sredina = levi + (desni - levi)/2;
+            Automobil trenutni = automobili.get(sredina);
+            if (trenutni.getId() == id){
+                return trenutni;
+            }
+
+            if (trenutni.getId() < id){
+                return binarnaPretragaAutomobilaPoId(automobili,sredina +1,desni,id) ;
+            }
+            if (trenutni.getId() > id){
+                return binarnaPretragaAutomobilaPoId(automobili,levi,sredina -1,id);
+            }
+        }
+        return null;
+    }
+
+    public Voznja binarnaPretragaVoznjePoId(List<Voznja> voznje,int levi,int desni,int id){
+        if (desni >= levi){
+            int sredina = levi + (desni - levi)/2;
+            Voznja trenutna = voznje.get(sredina);
+            if (trenutna.getId() == id){
+                return trenutna;
+            }
+
+            if (trenutna.getId() < id){
+                return binarnaPretragaVoznjePoId(voznje,sredina +1,desni,id) ;
+            }
+            if (trenutna.getId() > id){
+                return binarnaPretragaVoznjePoId(voznje,levi,sredina -1,id);
+            }
+        }
+        return null;
+    }
+
+
+
+
+    public Korisnik binarnaPretragaKorisnikaPoStringu(List<Korisnik> korisnici,int levi,int desni,String ime){
+        if (desni >= levi){
+            int sredina = levi +(desni - levi)/2;
+            Korisnik trenutni = korisnici.get(sredina);
+            if (trenutni.getKorisnickoIme().equalsIgnoreCase(ime)){
+                return trenutni;
+            }
+
+            if (trenutni.getKorisnickoIme().compareToIgnoreCase(ime) < 0){
+                return binarnaPretragaKorisnikaPoStringu(korisnici, sredina +1,desni,ime) ;
+            }
+            if (trenutni.getKorisnickoIme().compareToIgnoreCase(ime) > 0){
+                return binarnaPretragaKorisnikaPoStringu(korisnici,levi,sredina -1,ime);
+            }
+        }
+        return null;
+    }
+
+
+
     public Automobil pronadjiAutomobilPoID(int id) {
         for (Automobil a : sviAutomobili) {
             if (a.getId() == id) {
@@ -500,7 +573,7 @@ public class TaxiSluzba {
 
     // CRUD za VOZNJE
 
-    public Voznja kreirajVoznju(Date datum, String adresaPolaska, String adresaDestinacije, double brojKM, int trajanjeVoznje, Korisnik musterija) {
+    public static Voznja kreirajVoznju(Date datum, String adresaPolaska, String adresaDestinacije, double brojKM, int trajanjeVoznje, Korisnik musterija) {
         int najveciID = sveVoznje.get(sveVoznje.size() - 1).getId();
         int noviID = najveciID + 1;
 
@@ -514,6 +587,7 @@ public class TaxiSluzba {
 
 
     public Voznja izmeniVoznju(int id,Date datum,String adresaPolaska,String adresaDestinacije,StatusVoznje statusVoznje,double brKM,int trajanjeVoznje,Korisnik musterija,Vozac vozac) {
+
         Voznja voznjaZaIzmenu = pronadjiVoznjuPoID(id);
 
         if (voznjaZaIzmenu == null) {
@@ -562,22 +636,8 @@ public class TaxiSluzba {
         return sveVoznje;
     }
 
-    public List<Voznja> dobaviVoznjeDodeljeneVozacu(String korisnickoIme){
-        List<Voznja> listaVoznji = new ArrayList<Voznja>();
-        for (Voznja v:sveVoznje){
-            if (v.getTipKreiraneVoznje().equals(TipKreiraneVoznje.PUTEM_TELEFONA) && v.getStatus().equals(StatusVoznje.DODELJENA)&&
-                    v.getVozac().getKorisnickoIme().equals(korisnickoIme) && !v.isObrisan()){
-                listaVoznji.add(v);
-            }
 
-        }
-
-        return  listaVoznji;
-
-    }
-
-
-    public Voznja pronadjiVoznjuPoID(int id) {
+    public static Voznja pronadjiVoznjuPoID(int id) {
 
         Voznja pronadjenaVoznja = null;
         for (Voznja v : sveVoznje) {
@@ -588,7 +648,7 @@ public class TaxiSluzba {
         return pronadjenaVoznja;
     }
 
-    public Voznja obrisiVoznju(int id) {
+    public static Voznja obrisiVoznju(int id) {
         Voznja voznjaZaBrisanje = pronadjiVoznjuPoID(id);
         if (voznjaZaBrisanje == null) {
             System.out.println("Ne postoji voznja sa unetim ID...");
@@ -636,4 +696,39 @@ public class TaxiSluzba {
         pronadjenaVoznja.setVozac(pronadjeniVozac);
         sacuvajVoznje(voznjeFajl);
     }
+
+    public static void odbijVoznju(int id) {
+        Voznja pronadjenaVoznja = pronadjiVoznjuPoID(id);
+        if (pronadjenaVoznja == null){
+            System.out.println("Ne postoji voznja sa unetim id");
+        }
+        pronadjenaVoznja.setStatus(StatusVoznje.ODBIJENA);
+        sacuvajVoznje(voznjeFajl);
+    }
+
+
+    public void zavrsiVoznju(int id, double brojKM, int trajanjeVoznje) {
+        Voznja pronadjenaVoznja = pronadjiVoznjuPoID(id);
+        if (pronadjenaVoznja == null){
+            System.out.println("Ne postoji voznja sa unetim id");
+        }
+        pronadjenaVoznja.setBrojKM(brojKM);
+        pronadjenaVoznja.setTrajanjeVoznje(trajanjeVoznje);
+        pronadjenaVoznja.setStatus(StatusVoznje.ZAVRSENA);
+    }
+
+
+    public List<Vozac> kombinovanaPretraga(String ime, String prezime, Double plata, Integer automobilID) {
+        ArrayList<Vozac> pronadjeniVozaci = new ArrayList<Vozac>();
+        ArrayList<Vozac> sviVozaci = dobaviVozace();
+        for (Vozac v : sviVozaci) {
+            if (v.getIme().equalsIgnoreCase(ime) && v.getPrezime().equalsIgnoreCase(prezime) && v.getPlata() == plata && v.getTaxi().getId() == automobilID) {
+                pronadjeniVozaci.add(v);
+            }
+        }
+        return pronadjeniVozaci;
+
+    }
+
+
 }
