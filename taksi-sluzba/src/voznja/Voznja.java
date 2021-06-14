@@ -4,11 +4,13 @@ import korisnici.Korisnik;
 import korisnici.Vozac;
 
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 public class Voznja implements Comparable<Voznja>{
     private int id;
-    private Date datumKreirnja;
+    private LocalDateTime datumKreirnja;
     private String adresaPolaska;
     private String adresaDestinacije;
     private  StatusVoznje status;
@@ -22,7 +24,7 @@ public class Voznja implements Comparable<Voznja>{
     public Voznja() {
     }
 
-    public Voznja(int id, Date datumKreirnja, String adresaPolaska, String adresaDestinacije, StatusVoznje status, double brojKM, int trajanjeVoznje, Korisnik musterija, Vozac vozac, TipKreiraneVoznje tipKreiraneVoznje,  boolean obrisan) {
+    public Voznja(int id, LocalDateTime datumKreirnja, String adresaPolaska, String adresaDestinacije, StatusVoznje status, double brojKM, int trajanjeVoznje, Korisnik musterija, Vozac vozac, TipKreiraneVoznje tipKreiraneVoznje,  boolean obrisan) {
         this.datumKreirnja = datumKreirnja;
         this.adresaPolaska = adresaPolaska;
         this.adresaDestinacije = adresaDestinacije;
@@ -36,11 +38,11 @@ public class Voznja implements Comparable<Voznja>{
         this.obrisan = obrisan;
     }
 
-    public Date getDatumKreirnja() {
+    public LocalDateTime getDatumKreirnja() {
         return datumKreirnja;
     }
 
-    public void setDatumKreirnja(Date datumKreirnja) {
+    public void setDatumKreirnja(LocalDateTime datumKreirnja) {
         this.datumKreirnja = datumKreirnja;
     }
 
@@ -128,10 +130,26 @@ public class Voznja implements Comparable<Voznja>{
 
     public  String formatirajZaUpis() {
 
-        SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy HH:mm");
-        String datumFormatiran = formatter.format(datumKreirnja);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm");
+
+        String datumFormatiran = datumKreirnja.format(formatter);
+        String musterija = "";
+        String vozac = "";
+
+        if (this.getVozac() == null) {
+            vozac = "null";
+        } else {
+            vozac = this.getVozac().getKorisnickoIme();
+        }
+
+        if (this.getMusterija() == null) {
+            musterija = "null";
+        } else {
+            musterija = this.getMusterija().getKorisnickoIme();
+        }
+
         String zaUpis = String.format("%s|%s|%s|%s|%s|%s|%s|%s|%s|%s|%s",this.id, datumFormatiran,this.adresaPolaska,this.adresaDestinacije,
-                this.status,this.brojKM,this.trajanjeVoznje,this.musterija.getKorisnickoIme(),this.vozac.getKorisnickoIme(), this.getTipKreiraneVoznje(), this.isObrisan());
+                this.status,this.brojKM,this.trajanjeVoznje, musterija, vozac, this.getTipKreiraneVoznje(), this.isObrisan());
 
         return zaUpis;
     }

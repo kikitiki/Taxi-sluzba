@@ -13,16 +13,17 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Date;
-import java.util.List;
+import java.time.temporal.WeekFields;
+import java.util.*;
 
 public class TaxiSluzba {
 
     private static List<Korisnik> sviKorisnici = new ArrayList<Korisnik>();
     private static List<Automobil> sviAutomobili = new ArrayList<Automobil>();
     private static List<Voznja> sveVoznje = new ArrayList<Voznja>();
+    private static List idAutomobili  = new ArrayList();
+    private static final double CENA_START = 100.0;
+    private static final double CENA_PO_KM = 50.0;
 
     private static String automobiliFajl;
     private static String voznjeFajl;
@@ -156,11 +157,11 @@ public class TaxiSluzba {
                 }
 
                 String[] splitovano = line.split("\\|");
-                SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy HH:mm");
-
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm");
                 String idString = splitovano[0];
                 String datum = splitovano[1];
-                Date date = formatter.parse(datum);
+
+                LocalDateTime date = LocalDateTime.parse(datum, formatter);
                 String adresaPolaska = splitovano[2];
                 String adresaDestinacije = splitovano[3];
                 String statusVoznjeString = splitovano[4];
@@ -197,9 +198,6 @@ public class TaxiSluzba {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
-        } catch (ParseException e) {
-            e.printStackTrace();
-            System.out.println("Pogresan format datuma u fajlu iz kog se ucitava... Datum mora biti u formatu [dd-MM-yyyy HH:mm]");
         }
     }
 
@@ -368,7 +366,7 @@ public class TaxiSluzba {
 
 
 
-    public List<Automobil> pronadjiSlobodneAutomobile() {
+    public static List<Automobil> pronadjiSlobodneAutomobile() {
         List<Automobil> sviSlobodniAutomobili = new ArrayList<Automobil>();
         List<Vozac> sviVozaci = dobaviVozace();
         for (Automobil a : sviAutomobili) {
@@ -521,6 +519,17 @@ public class TaxiSluzba {
         return null;
     }
 
+    public static List<Integer> idAutomobila(Automobil automobil) {
+         List<Automobil> sviAutomobili =pronadjiSlobodneAutomobile();
+         List<Integer> slobodniAutomobiliId = new ArrayList<>();
+         for (Automobil a : sviAutomobili){
+           int idAutomobila =  a.getId();
+           slobodniAutomobiliId.add(idAutomobila);
+
+         }
+        return slobodniAutomobiliId;
+    }
+
     public Voznja binarnaPretragaVoznjePoId(List<Voznja> voznje,int levi,int desni,int id){
         if (desni >= levi){
             int sredina = levi + (desni - levi)/2;
@@ -573,7 +582,7 @@ public class TaxiSluzba {
 
     // CRUD za VOZNJE
 
-    public static Voznja kreirajVoznju(Date datum, String adresaPolaska, String adresaDestinacije, double brojKM, int trajanjeVoznje, Korisnik musterija) {
+    public static Voznja kreirajVoznju(LocalDateTime datum, String adresaPolaska, String adresaDestinacije, double brojKM, int trajanjeVoznje, Korisnik musterija) {
         int najveciID = sveVoznje.get(sveVoznje.size() - 1).getId();
         int noviID = najveciID + 1;
 
@@ -586,7 +595,7 @@ public class TaxiSluzba {
     }
 
 
-    public Voznja izmeniVoznju(int id,Date datum,String adresaPolaska,String adresaDestinacije,StatusVoznje statusVoznje,double brKM,int trajanjeVoznje,Korisnik musterija,Vozac vozac) {
+    public static Voznja izmeniVoznju(int id, LocalDateTime datum, String adresaPolaska, String adresaDestinacije, StatusVoznje statusVoznje, double brKM, int trajanjeVoznje, Korisnik musterija, Vozac vozac) {
 
         Voznja voznjaZaIzmenu = pronadjiVoznjuPoID(id);
 
@@ -683,52 +692,100 @@ public class TaxiSluzba {
         return pronadjenaMusterija;
     }
 
-    public void dodeliVoznjuVozacu(String korisnickoImeVozaca, int idVoznje) {
-        Voznja pronadjenaVoznja = pronadjiVoznjuPoID(idVoznje);
-        Vozac pronadjeniVozac = pronadjiVozacaPoKorisnickomImenu(korisnickoImeVozaca);
+    public Voznja dodeliVoznjuVozacu(String korisnickoImeVozaca, int idVoznje) {
+        Voznja pronadjenaVoznja = binarnaPretragaVoznjePoId(sveVoznje,0,sveVoznje.size()-1,idVoznje);
+        Korisnik pronadjeniKorisnik = binarnaPretragaKorisnikaPoStringu(sviKorisnici,0,sviKorisnici.size()-1,korisnickoImeVozaca);
         if (pronadjenaVoznja == null) {
             System.out.println("Ne postoji voznja sa unetim ID!");
+            return null;
         }
-        if (pronadjeniVozac == null) {
+        if (pronadjeniKorisnik == null) {
             System.out.println("Ne postoji vozac sa unetim korisnickim imenom");
+            return null;
         }
+
+        Vozac pronadjeniVozac = (Vozac) pronadjeniKorisnik;
         pronadjenaVoznja.setStatus(StatusVoznje.DODELJENA);
         pronadjenaVoznja.setVozac(pronadjeniVozac);
         sacuvajVoznje(voznjeFajl);
+
+        return pronadjenaVoznja;
     }
 
-    public static void odbijVoznju(int id) {
-        Voznja pronadjenaVoznja = pronadjiVoznjuPoID(id);
+    public  Voznja odbijVoznju(int id) {
+        Voznja pronadjenaVoznja = binarnaPretragaVoznjePoId(sveVoznje,0,sveVoznje.size()-1,id);
         if (pronadjenaVoznja == null){
             System.out.println("Ne postoji voznja sa unetim id");
+            return null;
         }
+        pronadjenaVoznja.setVozac(null);
         pronadjenaVoznja.setStatus(StatusVoznje.ODBIJENA);
         sacuvajVoznje(voznjeFajl);
+
+        return pronadjenaVoznja;
+    }
+
+    public Voznja prihvatiVoznju(int id){
+        Voznja prihvacenaVoznja = binarnaPretragaVoznjePoId(sveVoznje,0,sveVoznje.size()-1,id);
+        if (prihvacenaVoznja ==null){
+            System.out.println("Ne postoji voznja za unetim id");
+            return null;
+        }
+        prihvacenaVoznja.setStatus(StatusVoznje.PRIHVACENA);
+        sacuvajVoznje(voznjeFajl);
+        return prihvacenaVoznja;
     }
 
 
-    public void zavrsiVoznju(int id, double brojKM, int trajanjeVoznje) {
-        Voznja pronadjenaVoznja = pronadjiVoznjuPoID(id);
+    public Voznja zavrsiVoznju(int id, double brojKM, int trajanjeVoznje) {
+        Voznja pronadjenaVoznja = binarnaPretragaVoznjePoId(sveVoznje,0,sveVoznje.size()-1,id);
         if (pronadjenaVoznja == null){
             System.out.println("Ne postoji voznja sa unetim id");
+            return null;
         }
         pronadjenaVoznja.setBrojKM(brojKM);
         pronadjenaVoznja.setTrajanjeVoznje(trajanjeVoznje);
         pronadjenaVoznja.setStatus(StatusVoznje.ZAVRSENA);
+
+        sacuvajVoznje(voznjeFajl);
+
+        return pronadjenaVoznja;
     }
 
 
-    public List<Vozac> kombinovanaPretraga(String ime, String prezime, Double plata, Integer automobilID) {
-        ArrayList<Vozac> pronadjeniVozaci = new ArrayList<Vozac>();
+    public List<Vozac> kombinovanaPretraga(String ime, String prezime, Double plata, String automobilID) {
+
         ArrayList<Vozac> sviVozaci = dobaviVozace();
-        for (Vozac v : sviVozaci) {
-            if (v.getIme().equalsIgnoreCase(ime) && v.getPrezime().equalsIgnoreCase(prezime) && v.getPlata() == plata && v.getTaxi().getId() == automobilID) {
-                pronadjeniVozaci.add(v);
+
+        Iterator<Vozac> it = sviVozaci.iterator();
+
+        while(it.hasNext()) {
+            Vozac trenutni = it.next();
+
+            if (!ime.equals("") && !trenutni.getIme().equalsIgnoreCase(ime)) {
+                it.remove();
+                continue;
+            }
+
+            if (!prezime.equals("") && !trenutni.getPrezime().equalsIgnoreCase(prezime)) {
+                it.remove();
+                continue;
+            }
+
+            if (!(plata == null) && !(trenutni.getPlata() == plata)) {
+                it.remove();
+                continue;
+            }
+
+            if (!automobilID.equals("") && !trenutni.getTaxi().getBrojTaksiVozila().equalsIgnoreCase(automobilID)) {
+                it.remove();
+                continue;
             }
         }
-        return pronadjeniVozaci;
+        return sviVozaci;
 
     }
+
 
 
 }

@@ -1,5 +1,7 @@
 package gui;
 
+import automobil.Automobil;
+import automobil.VrstaAutomobila;
 import korisnici.Pol;
 import korisnici.Vozac;
 import net.miginfocom.swing.MigLayout;
@@ -28,6 +30,7 @@ public class VozaciForma extends JFrame {
     private JTextField txtBrojTelefona = new JTextField(20);
     private JLabel lblAdresa = new JLabel("Adresa");
     private JTextField txtAdresas = new JTextField(20);
+    private JLabel lblAutomobili = new JLabel("Automobili");
 
     private JButton btnOk = new JButton("OK");
     private JButton btnCancel = new JButton("Cancel");
@@ -43,7 +46,6 @@ public class VozaciForma extends JFrame {
      public void initMenu(){
          MigLayout mig = new MigLayout("wrap 2","[][]","[]10[][]10[]");
          setLayout(mig);
-
          add(lblIme);
          add(txtIme);
          add(lblPrezime);

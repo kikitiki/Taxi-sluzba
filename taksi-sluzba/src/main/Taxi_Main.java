@@ -9,7 +9,9 @@ import voznja.Voznja;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.time.temporal.WeekFields;
 import java.util.*;
 
 public class Taxi_Main {
@@ -81,7 +83,8 @@ public class Taxi_Main {
             System.out.println(a.getId());
         }
 
-
+        testirajKombinovanuPretragu(taxiSluzba);
+        
 
 
 
@@ -154,6 +157,17 @@ public class Taxi_Main {
         taxiSluzba.prikaziDispecere();
     }
 
+    public static void testirajKombinovanuPretragu(TaxiSluzba taxiSluzba) {
+        System.out.println("Kombinovana pretraga");
+
+        System.out.println("Rezultati pretrage: ");
+        List<Vozac> rezultati = taxiSluzba.kombinovanaPretraga("", "", null, "");
+        for (Vozac v : rezultati) {
+            System.out.println(v);
+        }
+    }
+
+
 
     public static void testirajKreiranjeVoznje(TaxiSluzba taxiSluzba, Scanner scanner) {
         System.out.println("KREIRANJE VOZNJE");
@@ -178,12 +192,9 @@ public class Taxi_Main {
 
         System.out.println("Unesite datum u formatu dd-MM-yyyy");
         String datum = scanner.nextLine();
-        Date datum1 = null;
-        try {
-            datum1 = new SimpleDateFormat("dd-MM-yyyy").parse(datum);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
+        LocalDateTime datum1 = null;
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm");
+        datum1 = LocalDateTime.parse(datum, formatter);
         taxiSluzba.kreirajVoznju(datum1, adresaPolaska, adresaDestinacije, brKM,trajanjeVoznje, pronadjenaMusterija);
     }
 
@@ -342,13 +353,9 @@ public class Taxi_Main {
 
         System.out.println("Unesite datum u formatu dd-MM-yyyy");
         String datum = scanner.nextLine();
-        Date datum1 = null;
-        try {
-            datum1 = new SimpleDateFormat("dd-MM-yyyy").parse(datum);
-        } catch (ParseException e) {
-            e.printStackTrace();
-            return;
-        }
+        LocalDateTime datum1 = null;
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm");
+        datum1 = LocalDateTime.parse(datum, formatter);
 
         taxiSluzba.izmeniVoznju(idVoznje, datum1, adresaPolaska, adresaDestinacije, StatusVoznje.ODBIJENA, brKM, trajanjeVoznje, pronadjenaMusterija, pronadjenjnVozac);
     }
@@ -370,6 +377,6 @@ public class Taxi_Main {
         System.out.println("Unesite id voznje:");
         int id = Integer.parseInt(scanner.nextLine());
 
-        TaxiSluzba.odbijVoznju(id);
+        taxiSluzba.odbijVoznju(id);
     }
 }

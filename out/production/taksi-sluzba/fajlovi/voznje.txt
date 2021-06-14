@@ -1,7 +1,10 @@
-1|29-04-2021 22:48|adresa polaska|destiancija|DODELJENA|50.0|30|alek|milan|PUTEM_TELEFONA|false
-2|29-04-2021 22:54|adresa polaska|destiancija|KREIRANA|50.0|30|alek|ana|PUTEM_TELEFONA|false
-3|29-04-2021 23:01|adresa polaska|destiancija|KREIRANA|50.0|30|alek|ana|PUTEM_TELEFONA|false
-4|29-04-2021 23:01|Kisacka 15|Vrsacka 11|KREIRANA_NA_CEKANJU|15.15|20|iva|ana|PUTEM_APLIKACIJE|false
-5|14-07-2021 00:00|adresa polaska|adresa destinacije|KREIRANA|50.0|120|alek|ana|PUTEM_TELEFONA|false
-6|14-08-2021 00:00|qweqwe|asdasd|KREIRANA|50.0|120|alek|ana|PUTEM_TELEFONA|false
-7|12-12-2021 00:00|Nova adresa|Bore Prodanovica|ODBIJENA|90.0|90|alek|ana|PUTEM_TELEFONA|false
+1|29-04-2021 22:48|adresa polaska|destiancija|DODELJENA|0.0|0|alek|null|PUTEM_TELEFONA|false
+2|29-04-2021 22:54|adresa polaska|destiancija|KREIRANA|0.0|0|alek|null|PUTEM_TELEFONA|false
+3|29-04-2021 23:01|adresa polaska|destiancija|KREIRANA|0.0|0|alek|null|PUTEM_TELEFONA|false
+4|29-04-2021 23:01|Kisacka 15|Vrsacka 11|ZAVRSENA|15.15|20|iva|ana|PUTEM_TELEFONA|false
+5|14-07-2021 00:00|adresa polaska|adresa destinacije|PRIHVACENA|0.0|0|alek|ana|PUTEM_TELEFONA|false
+6|14-08-2021 00:00|qweqwe|asdasd|KREIRANA|0.0|0|alek|null|PUTEM_TELEFONA|false
+7|12-12-2021 00:00|Nova adresa|Bore Prodanovica|ODBIJENA|0.0|0|alek|null|PUTEM_TELEFONA|true
+8|14-06-2021 21:12|||KREIRANA|0.0|0|ivana|null|PUTEM_TELEFONA|true
+9|14-06-2021 21:12|||KREIRANA|0.0|0|ivana|null|PUTEM_TELEFONA|true
+10|14-06-2021 21:14|Pariske komune|Pariske komune|KREIRANA|0.0|0|ivana|null|PUTEM_TELEFONA|true
