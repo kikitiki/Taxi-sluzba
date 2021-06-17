@@ -25,9 +25,9 @@ public class TaxiSluzba {
     private static final double CENA_START = 100.0;
     private static final double CENA_PO_KM = 50.0;
 
-    private static String automobiliFajl;
-    private static String voznjeFajl;
-    private static String korisniciFajl;
+    public static String automobiliFajl;
+    public static String voznjeFajl;
+    public static String korisniciFajl;
 
     public TaxiSluzba() {
 
@@ -366,10 +366,13 @@ public class TaxiSluzba {
 
 
 
-    public static List<Automobil> pronadjiSlobodneAutomobile() {
+    public List<Automobil> pronadjiSlobodneAutomobile() {
         List<Automobil> sviSlobodniAutomobili = new ArrayList<Automobil>();
         List<Vozac> sviVozaci = dobaviVozace();
         for (Automobil a : sviAutomobili) {
+            if (a.isObrisan() == true) {
+                continue;
+            }
             boolean automobilSlobodan = true;
             for (Vozac v : sviVozaci) {
                 if (v.getTaxi().getBrojTaksiVozila().equals(a.getBrojTaksiVozila())) {
@@ -407,6 +410,7 @@ public class TaxiSluzba {
             }
         }
         sviKorisnici.add(noviVozac);
+        Collections.sort(sviKorisnici);
         sacuvajKorisnike(korisniciFajl);
         return noviVozac;
     }
@@ -519,16 +523,16 @@ public class TaxiSluzba {
         return null;
     }
 
-    public static List<Integer> idAutomobila(Automobil automobil) {
-         List<Automobil> sviAutomobili =pronadjiSlobodneAutomobile();
-         List<Integer> slobodniAutomobiliId = new ArrayList<>();
-         for (Automobil a : sviAutomobili){
-           int idAutomobila =  a.getId();
-           slobodniAutomobiliId.add(idAutomobila);
-
-         }
-        return slobodniAutomobiliId;
-    }
+//    public static List<Integer> idAutomobila(Automobil automobil) {
+//         List<Automobil> sviAutomobili =pronadjiSlobodneAutomobile();
+//         List<Integer> slobodniAutomobiliId = new ArrayList<>();
+//         for (Automobil a : sviAutomobili){
+//           int idAutomobila =  a.getId();
+//           slobodniAutomobiliId.add(idAutomobila);
+//
+//         }
+//        return slobodniAutomobiliId;
+//    }
 
     public Voznja binarnaPretragaVoznjePoId(List<Voznja> voznje,int levi,int desni,int id){
         if (desni >= levi){
@@ -645,6 +649,22 @@ public class TaxiSluzba {
         return sveVoznje;
     }
 
+    public List<Voznja> voznjeVozaca(String korisnickoIme){
+        System.out.println("korisnicko ime: " + korisnickoIme);
+        List<Voznja> nadjeneVoznje = new ArrayList<Voznja>();
+        for (Voznja v: sveVoznje) {
+            if (v.getVozac() != null && v.getVozac().getKorisnickoIme().equals(korisnickoIme)) {
+                System.out.println(v);
+                nadjeneVoznje.add(v);
+            }
+        }
+        System.out.println("prosao");
+
+        System.out.println("size: " + nadjeneVoznje.size());
+        return nadjeneVoznje;
+
+    }
+
 
     public static Voznja pronadjiVoznjuPoID(int id) {
 
@@ -670,7 +690,7 @@ public class TaxiSluzba {
         return voznjaZaBrisanje;
     }
 
-    public Vozac pronadjiVozacaPoKorisnickomImenu(String korisnickoIme) {
+    public static Vozac pronadjiVozacaPoKorisnickomImenu(String korisnickoIme) {
         Vozac pronadjenVozac = null;
         for (Korisnik k : sviKorisnici) {
             if (k.getTipKorisnika().equals(TipKorisnika.VOZAC) && !k.isObrisan() && k.getKorisnickoIme().equals(korisnickoIme)) {
@@ -785,6 +805,141 @@ public class TaxiSluzba {
         return sviVozaci;
 
     }
+
+    public void generisiIzvestaj(List<Voznja> voznje, String datumZaIspis) {
+
+        int ukupanBrojVoznji = voznje.size();
+        int poruceneVoznjePutemAplikacije = 0;
+        int poruceneVoznjePutemTelefona = 0;
+        int brojAktivnihVozaca = 0;
+        double prosecnoTrajanjeVoznje = 0;
+        double prosecanBrojPredjenihKM = 0;
+        double ukupnaZaradaZaSveVoznje = 0;
+        double prosecnaZaradaPoVoznji = 0;
+
+        int ukupnoTrajanjeVoznji = 0;
+        double ukupnoPredjenoKM = 0;
+
+
+        List<Vozac> aktivniVozaci = new ArrayList<Vozac>();
+        for (Voznja voznja : voznje) {
+            if (voznja.getTipKreiraneVoznje().equals(TipKreiraneVoznje.PUTEM_TELEFONA)) {
+                poruceneVoznjePutemTelefona += 1;
+            } else {
+                poruceneVoznjePutemAplikacije += 1;
+            }
+
+            if (!aktivniVozaci.contains(voznja.getVozac())) {
+                aktivniVozaci.add(voznja.getVozac());
+            }
+
+            // dodajemo u sumu za prosecno trajanje voznji
+            ukupnoTrajanjeVoznji += voznja.getTrajanjeVoznje();
+
+            // dodajemo u sumu za prosecno predjenih KM
+            ukupnoPredjenoKM += voznja.getBrojKM();
+
+            ukupnaZaradaZaSveVoznje += (voznja.getBrojKM() * CENA_PO_KM) + CENA_START;
+        }
+
+        brojAktivnihVozaca = aktivniVozaci.size();
+
+        // izracunaj prosecno trajanje voznji
+        prosecnoTrajanjeVoznje = ukupnoTrajanjeVoznji / voznje.size();
+
+        // izracunaj prosecno predjeno KM po voznji:
+        prosecanBrojPredjenihKM = ukupnoPredjenoKM / voznje.size();
+
+        // dodati cenu za START i cenu po KM u taxi sluzbu prvo pa onda izracunati
+        prosecnaZaradaPoVoznji = ukupnaZaradaZaSveVoznje / voznje.size();
+
+
+        System.out.println("==========================================");
+        System.out.println("=============== IZVESTAJ =================");
+        System.out.println("datum: " + datumZaIspis);
+        System.out.println(String.format("Ukupan broj voznji: %d", ukupanBrojVoznji));
+        System.out.println(String.format("Broj voznji porucenih putem telefona: %d",poruceneVoznjePutemTelefona));
+        System.out.println(String.format("Broj voznji porucenih putem aplikacije: %d",poruceneVoznjePutemAplikacije));
+        System.out.println(String.format("Broj aktivnih vozaca: %d", brojAktivnihVozaca));
+        System.out.println(String.format("Prosecno trajanje voznje: %f", prosecnoTrajanjeVoznje));
+        System.out.println(String.format("Prosecno predjenih KM: %f", prosecanBrojPredjenihKM));
+        System.out.println(String.format("Ukupna zarada za sve voznje: %f", ukupnaZaradaZaSveVoznje));
+        System.out.println(String.format("Prosecna zarada po voznji: %f", prosecnaZaradaPoVoznji));
+        System.out.println(String.format("Prosecno predjenih KM: %f", prosecanBrojPredjenihKM));
+        System.out.println("==========================================");
+
+    }
+
+    public void dnevniIzvestaj(LocalDateTime dan) {
+        List<Voznja> pronadjeneVoznje = new ArrayList<Voznja>();
+        for (Voznja voznja : sveVoznje) {
+            if (voznja.getStatus().equals(StatusVoznje.ZAVRSENA) &&
+                    voznja.getDatumKreirnja().getYear() == dan.getYear() &&
+                    voznja.getDatumKreirnja().getMonth().equals(dan.getMonth()) &&
+                    voznja.getDatumKreirnja().getDayOfMonth() == dan.getDayOfMonth()) {
+                pronadjeneVoznje.add(voznja);
+            }
+        }
+        if (pronadjeneVoznje.size() == 0) {
+            System.out.println("Nema voznji za ovaj period!");
+            return;
+        }
+        String datumZaIspisUIzvestaju = dan.toString();
+        generisiIzvestaj(pronadjeneVoznje, datumZaIspisUIzvestaju);
+    }
+
+    public void nedeljniIzvestaj(int nedelja, int godina) {
+        List<Voznja> pronadjeneVoznje = new ArrayList<Voznja>();
+
+        for (Voznja voznja : sveVoznje) {
+            WeekFields weekFields = WeekFields.of(Locale.getDefault());
+            int nedeljaVoznje = voznja.getDatumKreirnja().get(weekFields.weekOfWeekBasedYear());
+            if (voznja.getStatus().equals(StatusVoznje.ZAVRSENA) &&
+                    voznja.getDatumKreirnja().getYear() == godina && nedeljaVoznje == nedelja) {
+                pronadjeneVoznje.add(voznja);
+            }
+        }
+        if (pronadjeneVoznje.size() == 0) {
+            System.out.println("Nema voznji za ovaj period!");
+            return;
+        }
+        String datumZaIspisUIzvestaju = String.format("%d/%d", nedelja, godina);
+        generisiIzvestaj(pronadjeneVoznje, datumZaIspisUIzvestaju);
+    }
+
+    public void mesecniIzvestaj(int mesec, int godina) {
+        List<Voznja> pronadjeneVoznje = new ArrayList<Voznja>();
+        for (Voznja voznja : sveVoznje) {
+            if (voznja.getStatus().equals(StatusVoznje.ZAVRSENA) &&
+                    voznja.getDatumKreirnja().getYear() == godina &&
+                    voznja.getDatumKreirnja().getMonth().getValue() == mesec) {
+                pronadjeneVoznje.add(voznja);
+            }
+        }
+        if (pronadjeneVoznje.size() == 0) {
+            System.out.println("Nema voznji za ovaj period!");
+            return;
+        }
+        String datumZaIspisUIzvestaju = String.format("%d/%d", mesec, godina);
+        generisiIzvestaj(pronadjeneVoznje, datumZaIspisUIzvestaju);
+    }
+
+    public void godisnjiIzvestaj(int godina) {
+        List<Voznja> pronadjeneVoznje = new ArrayList<Voznja>();
+        for (Voznja voznja : sveVoznje) {
+            if (voznja.getStatus().equals(StatusVoznje.ZAVRSENA) &&
+                    voznja.getDatumKreirnja().getYear() == godina) {
+                pronadjeneVoznje.add(voznja);
+            }
+        }
+        if (pronadjeneVoznje.size() == 0) {
+            System.out.println("Nema voznji za ovaj period!");
+            return;
+        }
+        String datumZaIspisUIzvestaju = String.format("%d", godina);
+        generisiIzvestaj(pronadjeneVoznje, datumZaIspisUIzvestaju);
+    }
+
 
 
 

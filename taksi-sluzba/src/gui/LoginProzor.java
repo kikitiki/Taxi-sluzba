@@ -61,7 +61,7 @@ public class LoginProzor extends JFrame{
                     } else {
                         LoginProzor.this.dispose();
                         LoginProzor.this.setVisible(false);
-                        GlavniProzor gp = new GlavniProzor(ulogovaniKorisnik);
+                        GlavniProzor gp = new GlavniProzor(ulogovaniKorisnik, taxiSluzba);
                         gp.setVisible(true);
 //                        PrijavljeniKorisnik pp = new PrijavljeniKorisnik(ulogovaniKorisnik);
 //                        pp.setVisible(true);

@@ -6,6 +6,8 @@ import taxiSluzba.TaxiSluzba;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -19,11 +21,11 @@ public class VozaciTabela extends JFrame {
     private DefaultTableModel tableModel;
     private JTable vozaciTabela;
 
-//    private TaxiSluzba taxiSluzba;
+    private TaxiSluzba taxiSluzba;
 
-    public VozaciTabela(){
-      //  this.taxiSluzba = taxiSluzba;
-        setSize(500,300);
+    public VozaciTabela(TaxiSluzba taxiSluzba){
+        this.taxiSluzba = taxiSluzba;
+        setSize(700,500);
         setResizable(true);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null);
@@ -40,7 +42,7 @@ public class VozaciTabela extends JFrame {
         add(mainToolbar, BorderLayout.NORTH);
         mainToolbar.setFloatable(false);
 
-        String[] zaglavlja = new String[]{"Tip Korisnika","Korisnicko ime","Ime","Prezime","JMBG","Adresa","Pol","Broj telefeona"};
+        String[] zaglavlja = new String[]{"Tip Korisnika","Korisnicko ime","Ime","Prezime","JMBG","Adresa","Pol","Broj telefeona","Plata"};
         Object[][] sadrzaj = new Object[TaxiSluzba.dobaviVozace().size()][zaglavlja.length];
 
         for (int i =0 ;  i < TaxiSluzba.dobaviVozace().size(); i++){
@@ -53,10 +55,16 @@ public class VozaciTabela extends JFrame {
             sadrzaj[i][5] = vozac.getAdresa();
             sadrzaj[i][6] = vozac.getPol();
             sadrzaj[i][7] = vozac.getBrojTelefona();
+            sadrzaj[i][8] = vozac.getPlata();
         }
 
        tableModel = new DefaultTableModel(sadrzaj,zaglavlja);
         vozaciTabela = new JTable(tableModel);
+        TableRowSorter<TableModel> sorter = new TableRowSorter<TableModel>(vozaciTabela.getModel());
+
+        vozaciTabela.setRowSorter(sorter);
+        vozaciTabela.setRowSelectionAllowed(true);
+
 
         vozaciTabela.setRowSelectionAllowed(true);
         vozaciTabela.setColumnSelectionAllowed(false);
@@ -88,6 +96,7 @@ public class VozaciTabela extends JFrame {
                     if (izbor == JOptionPane.YES_OPTION){
                         TaxiSluzba.obrisiVozaca(vozac.getBrojClanskeKarte());
                         tableModel.removeRow(red);
+                        TaxiSluzba.sacuvajKorisnike(TaxiSluzba.korisniciFajl);
                     }
                 }
 
@@ -99,8 +108,31 @@ public class VozaciTabela extends JFrame {
         btnAdd.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                VozaciForma vf = new VozaciForma();
+                VozaciForma vf = new VozaciForma(taxiSluzba,null);
                 vf.setVisible(true);
+            }
+        });
+
+        btnEdit.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int red = vozaciTabela.getSelectedRow();
+                if(red == -1){
+                    JOptionPane.showMessageDialog(null, "Molimo izaberite red",
+                            "Greska", JOptionPane.WARNING_MESSAGE);
+                }else {
+                    String korisnickoIme = tableModel.getValueAt(red,1).toString();
+                    Vozac vozac = TaxiSluzba.pronadjiVozacaPoKorisnickomImenu(korisnickoIme);
+                    //Vozac vozac = TaxiSluzba.pronadjiVozacaPoKorisnickomImenu(korisnickoIme);
+                    if(vozac == null){
+                        JOptionPane.showMessageDialog(null,
+                                "Greska prilikom pronalazenja vozaca sa tim korisnickim imenom",
+                                "Greska", JOptionPane.WARNING_MESSAGE);
+                    }else {
+                        VozaciForma vf = new VozaciForma(taxiSluzba,vozac);
+                        vf.setVisible(true);
+                    }
+                }
             }
         });
 

@@ -8,10 +8,13 @@ import javax.swing.*;
 
 public class GlavniProzor extends JFrame {
 
-    public GlavniProzor(Korisnik ulogovani) {
+    private TaxiSluzba taxiSluzba;
+
+    public GlavniProzor(Korisnik ulogovani, TaxiSluzba taxiSluzba) {
+        this.taxiSluzba = taxiSluzba;
         if (ulogovani.getTipKorisnika().equals(TipKorisnika.DISPECER)) {
             DispecerProzor dp;
-            dp = new DispecerProzor();
+            dp = new DispecerProzor(this.taxiSluzba);
             dp.setVisible(true);
 
         } else if (ulogovani.getTipKorisnika().equals(TipKorisnika.MUSTERIJA)) {
@@ -20,6 +23,11 @@ public class GlavniProzor extends JFrame {
                 mp = new MusterijaProzor(ulogovani);
                 mp.setVisible(true);
             }
+        }else {
+            VozaciProzor vp;
+            vp = new VozaciProzor(ulogovani, taxiSluzba);
+            vp.setVisible(true);
+
         }
     }
 }

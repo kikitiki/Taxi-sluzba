@@ -12,9 +12,9 @@ public class DispecerProzor extends JFrame {
     private JButton voznje = new JButton("Voznje");
 
     private TaxiSluzba taxiSluzba;
-   // TaxiSluzba taxiSluzba
-    public DispecerProzor(){
-         //this.taxiSluzba = taxiSluzba;
+
+    public DispecerProzor(TaxiSluzba taxiSluzba){
+         this.taxiSluzba = taxiSluzba;
          setTitle("Meni dispecera");
          setSize(500,500);
          setResizable(false);
@@ -36,7 +36,7 @@ public class DispecerProzor extends JFrame {
         vozaci.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                VozaciTabela pp = new VozaciTabela();
+                VozaciTabela pp = new VozaciTabela(taxiSluzba);
                 pp.setVisible(true);
             }
         });

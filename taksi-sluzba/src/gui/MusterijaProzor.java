@@ -61,9 +61,10 @@ public class MusterijaProzor extends JFrame {
                 String adreasaPolaska = txtAdresaPolaska.getText().trim();
                 String adresaDolaska = txtAdresaDolaska.getText().trim();
 
-                kreirajVoznju(LocalDateTime.now(),adreasaPolaska,adreasaPolaska,
+                kreirajVoznju(LocalDateTime.now(),adreasaPolaska,adresaDolaska,
                         0.0,0,ulogovani);
-                //TaxiSluzba.sacuvajVoznje(VOZNJE_FAJL);
+                JOptionPane.showMessageDialog(null, "Uspesno ste porucili voznju",
+                        "Uspesno", JOptionPane.INFORMATION_MESSAGE);
             }
         });
     }

@@ -2,11 +2,20 @@ package gui;
 
 import automobil.Automobil;
 import automobil.VrstaAutomobila;
+import korisnici.Korisnik;
 import korisnici.Pol;
+import korisnici.TipKorisnika;
 import korisnici.Vozac;
 import net.miginfocom.swing.MigLayout;
+import taxiSluzba.TaxiSluzba;
 
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
+
+import static taxiSluzba.TaxiSluzba.korisniciFajl;
 
 public class VozaciForma extends JFrame {
 
@@ -18,7 +27,7 @@ public class VozaciForma extends JFrame {
     private  JTextField txtKorisnickoIme = new JTextField(20);
     private JLabel lbllozinka = new JLabel("Lozinka");
     private  JPasswordField pfLozinka = new JPasswordField(20);
-    private JLabel lblPol = new JLabel("pol");
+    private JLabel lblPol = new JLabel("Pol");
     private JComboBox<Pol> comboBox = new JComboBox<Pol>(Pol.values());
     private JLabel lblPlata = new JLabel("Plata");
     private JTextField txtPlata = new JTextField(20);
@@ -26,16 +35,36 @@ public class VozaciForma extends JFrame {
     private JTextField txtClanskakarta = new JTextField(20);
     private JLabel lblJmbg = new JLabel("Jmbg");
     private JTextField txtJmbg = new JTextField(20);
-    private JLabel lblBrojTelefona= new JLabel("Broj teelfona");
+    private JLabel lblBrojTelefona= new JLabel("Broj telfona");
     private JTextField txtBrojTelefona = new JTextField(20);
     private JLabel lblAdresa = new JLabel("Adresa");
-    private JTextField txtAdresas = new JTextField(20);
+    private JTextField txtAdresa = new JTextField(20);
     private JLabel lblAutomobili = new JLabel("Automobili");
+    private JComboBox<Automobil> comboBoxAutomobil = new JComboBox<Automobil>();
 
     private JButton btnOk = new JButton("OK");
     private JButton btnCancel = new JButton("Cancel");
 
-    public VozaciForma(){
+    private TaxiSluzba taxiSluzba;
+    private Vozac vozac;
+
+    public VozaciForma(TaxiSluzba taxiSluzba,Vozac vozac){
+        this.taxiSluzba = taxiSluzba;
+        this.vozac =vozac;
+
+        if (vozac == null){
+            setTitle("Dodavanje vozaca");
+        }else{
+            setTitle("Izmena podataka");
+        }
+
+        List<Automobil> slobodniAutomobili = taxiSluzba.pronadjiSlobodneAutomobile();
+
+        for (Automobil a: slobodniAutomobili) {
+           comboBoxAutomobil.addItem(a);
+        }
+
+
         setResizable(true);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null);
@@ -46,6 +75,11 @@ public class VozaciForma extends JFrame {
      public void initMenu(){
          MigLayout mig = new MigLayout("wrap 2","[][]","[]10[][]10[]");
          setLayout(mig);
+
+         if(vozac !=null){
+             popuniPolja();
+         }
+
          add(lblIme);
          add(txtIme);
          add(lblPrezime);
@@ -65,10 +99,125 @@ public class VozaciForma extends JFrame {
          add(lblBrojTelefona);
          add(txtBrojTelefona);
          add(lblAdresa);
-         add(txtAdresas);
+         add(txtAdresa);
+         add(lblAutomobili);
+         add(comboBoxAutomobil);
+         add(btnOk);
+         add(btnCancel);
      }
 
      public void initActions(){
+        btnOk.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
 
+                if(validacija()){
+                    String ime = txtIme.getText().trim();
+                    String prezime = txtPrezime.getText().trim();
+                    String korisnickoIme = txtKorisnickoIme.getText().trim();
+                    String sifra =new String(pfLozinka.getPassword()).trim();
+                    Pol pol = (Pol)comboBox.getSelectedItem();
+                    String jmbg = txtJmbg.getText().trim();
+                    String adresa = txtAdresa.getText().trim();
+                    String brojTelefona = txtBrojTelefona.getText().trim();
+                    String brojClanskeKarte = txtClanskakarta.getText().trim();
+                    Automobil automobil =(Automobil)comboBoxAutomobil.getSelectedItem();
+                    Double plata = Double.valueOf(txtPlata.getText().trim());
+                   // double plata = ;
+
+                    if (vozac == null){//DODAVANJE:
+                        taxiSluzba.kreirajVozaca(jmbg,korisnickoIme,sifra,ime,prezime,adresa,pol,brojTelefona,plata,automobil,brojClanskeKarte);
+                    }else {//IZMENA:
+                        vozac.setJmbg(jmbg);
+                        vozac.setLozinka(sifra);
+                        vozac.setIme(ime);
+                        vozac.setPrezime(prezime);
+                        vozac.setAdresa(adresa);
+                        vozac.setPol(pol);
+                        vozac.setBrojTelefona(brojTelefona);
+                        vozac.setPlata(Double.parseDouble(String.valueOf(plata)));
+                        vozac.setBrojClanskeKarte(brojClanskeKarte);
+                    }
+                    TaxiSluzba.sacuvajKorisnike(korisniciFajl);
+                    VozaciForma.this.dispose();
+                    VozaciForma.this.setVisible(false);
+                }
+            }
+        });
+     }
+
+     private void popuniPolja(){
+        txtIme.setText(vozac.getIme());
+        txtPrezime.setText(vozac.getPrezime());
+        txtKorisnickoIme.setText(vozac.getKorisnickoIme());
+        pfLozinka.setText(vozac.getLozinka());
+        comboBox.setSelectedItem(vozac.getPol());
+        txtPlata.setText(String.valueOf(vozac.getPlata()));
+        txtClanskakarta.setText(vozac.getBrojClanskeKarte());
+        txtJmbg.setText(vozac.getJmbg());
+        txtBrojTelefona.setText(vozac.getBrojTelefona());
+        txtAdresa.setText(vozac.getAdresa());
+     }
+
+     private boolean validacija(){
+        boolean ok = true;
+        String poruka = "Molimo popravite sledece greske u unosu:\n";
+        if(txtIme.getText().trim().equals("")){
+            System.out.println("1");
+            poruka += "- Unesite ime\n";
+            ok = false;
+        }
+        if(txtPrezime.getText().trim().equals("")){
+            System.out.println("2");
+            poruka += "- Unesite prezime\n";
+            ok = false;
+        }
+         if(txtKorisnickoIme.getText().trim().equals("")){
+             System.out.println("3");
+             poruka += "- Unesite korisnicko ime\n";
+             ok = false;
+         }else if (vozac != null){
+             String korisnickoIme = txtKorisnickoIme.getText().trim();
+             Korisnik pronadjeni = taxiSluzba.pronadjiVozacaPoKorisnickomImenu(korisnickoIme);
+             System.out.println("4");
+             if (pronadjeni == null){
+                 poruka += "Vozac sa tim korisnickim imenom vec postoji\n";
+                 System.out.println("5");
+                 ok = false;
+             }
+         }
+         if(txtAdresa.getText().trim().equals("")){
+             System.out.println("6");
+             poruka += "- Unesite adresu\n";
+             ok = false;
+         }
+         if(txtBrojTelefona.getText().trim().equals("")){
+             System.out.println("7");
+             poruka += "- Unesite broj telefona\n";
+             ok = false;
+         }
+         if(txtJmbg.getText().trim().equals("")){
+             System.out.println("8");
+             poruka += "- Unesite jmbg\n";
+             ok = false;
+         }
+
+         if (txtClanskakarta.getText().trim().equals("")){
+             poruka += "- Unesite broj clanske karte\n";
+             ok = false;
+         }
+         String sifra = new String(pfLozinka.getPassword()).trim();
+         if(sifra.equals("")){
+             System.out.println("9");
+             poruka += "- Unesite sifru\n";
+             ok = false;
+         }
+
+         if (ok == false){
+             System.out.println("10");
+             JOptionPane.showMessageDialog(null,poruka,"Neispravni podaci",JOptionPane.WARNING_MESSAGE);
+         }
+         System.out.println(ok);
+        return ok;
      }
 }

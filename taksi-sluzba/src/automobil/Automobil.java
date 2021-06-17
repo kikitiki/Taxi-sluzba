@@ -97,13 +97,14 @@ public class Automobil implements Comparable<Automobil> {
 
     @Override
     public String toString() {
-        return "Automobil{" +
-                "brojTaksiVozila='" + brojTaksiVozila + '\'' +
-                ", model='" + model + '\'' +
-                ", proizvodjac='" + proizvodjac + '\'' +
-                ", registracija='" + registracija + '\'' +
-                ", tipAutomobila=" + tipAutomobila +
-                '}';
+        return this.proizvodjac + " " + this.model;
+//        return "Automobil{" +
+//                "brojTaksiVozila='" + brojTaksiVozila + '\'' +
+//                ", model='" + model + '\'' +
+//                ", proizvodjac='" + proizvodjac + '\'' +
+//                ", registracija='" + registracija + '\'' +
+//                ", tipAutomobila=" + tipAutomobila +
+//                '}';
     }
 
     @Override

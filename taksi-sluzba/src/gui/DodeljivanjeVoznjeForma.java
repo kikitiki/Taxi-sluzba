@@ -16,7 +16,7 @@ public class DodeljivanjeVoznjeForma extends JFrame {
     private JLabel lblMusterija = new JLabel("Musterija");
     private JTextField txtMusterija = new JTextField(20);
     private JLabel lblStatusVoznje = new JLabel("Status");
-    private JTextField txtStatusVoznje = new JTextField("Kreirana");
+    private JTextField txtStatusVoznje = new JTextField("Dodeljena");
     private JLabel lblVozac = new JLabel("Vozac");
     private  JComboBox<Vozac> comboBox = new JComboBox<Vozac>();
    // private JTextField txtVozac = new JTextField(20);

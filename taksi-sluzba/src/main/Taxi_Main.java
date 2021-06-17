@@ -84,7 +84,7 @@ public class Taxi_Main {
         }
 
         testirajKombinovanuPretragu(taxiSluzba);
-        
+        testirajIzvestaje(taxiSluzba);
 
 
 
@@ -107,7 +107,14 @@ public class Taxi_Main {
     }
 
 
+    public static void testirajIzvestaje(TaxiSluzba taxiSluzba) {
+        LocalDateTime date = LocalDateTime.of(2021, 4, 29, 12, 12);
+        taxiSluzba.godisnjiIzvestaj(2021);
+        taxiSluzba.dnevniIzvestaj(date);
+        taxiSluzba.mesecniIzvestaj(4, 2021);
+        taxiSluzba.nedeljniIzvestaj(18, 2021);
 
+    }
 
     public static void ispisiSvePodatke(TaxiSluzba taxiSluzba) {
         for (Korisnik korisnik: taxiSluzba.getSviKorisnici()){
