@@ -48,13 +48,7 @@ public class DispecerProzor extends JFrame {
                 vp.setVisible(true);
             }
         });
-//        kreiraneVoznje.addActionListener(new ActionListener() {
-//            @Override
-//            public void actionPerformed(ActionEvent e) {
-//                DodeljivanjeVoznjeForma dv = new DodeljivanjeVoznjeForma();
-//                dv.setVisible(true);
-//            }
-//        });
+
 
 
     }

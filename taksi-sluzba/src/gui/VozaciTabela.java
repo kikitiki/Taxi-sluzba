@@ -1,6 +1,5 @@
 package gui;
 
-import korisnici.Korisnik;
 import korisnici.Vozac;
 import taxiSluzba.TaxiSluzba;
 
@@ -108,7 +107,7 @@ public class VozaciTabela extends JFrame {
         btnAdd.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                VozaciForma vf = new VozaciForma(taxiSluzba,null);
+                DodajIzmeniVozaca vf = new DodajIzmeniVozaca(taxiSluzba,null);
                 vf.setVisible(true);
             }
         });
@@ -123,13 +122,12 @@ public class VozaciTabela extends JFrame {
                 }else {
                     String korisnickoIme = tableModel.getValueAt(red,1).toString();
                     Vozac vozac = TaxiSluzba.pronadjiVozacaPoKorisnickomImenu(korisnickoIme);
-                    //Vozac vozac = TaxiSluzba.pronadjiVozacaPoKorisnickomImenu(korisnickoIme);
                     if(vozac == null){
                         JOptionPane.showMessageDialog(null,
                                 "Greska prilikom pronalazenja vozaca sa tim korisnickim imenom",
                                 "Greska", JOptionPane.WARNING_MESSAGE);
                     }else {
-                        VozaciForma vf = new VozaciForma(taxiSluzba,vozac);
+                        DodajIzmeniVozaca vf = new DodajIzmeniVozaca(taxiSluzba,vozac);
                         vf.setVisible(true);
                     }
                 }

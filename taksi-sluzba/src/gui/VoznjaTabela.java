@@ -20,7 +20,7 @@ import static taxiSluzba.TaxiSluzba.obrisiVoznju;
 
 public class VoznjaTabela extends JFrame {
     private JToolBar mainToolbar = new JToolBar();
-    private JButton btnAdd = new JButton("Dodaj");
+   // private JButton btnAdd = new JButton("Dodaj");
     private JButton btnEdit = new JButton("Izmeni");
     private JButton btnDelete = new JButton("Obrisi");
 
@@ -28,6 +28,7 @@ public class VoznjaTabela extends JFrame {
     private JTable voznjeTabela;
 
     private TaxiSluzba taxiSluzba;
+    private Voznja voznja;
 
     public VoznjaTabela() {
         // this.taxiSluzba = taxiSluzba;
@@ -41,7 +42,7 @@ public class VoznjaTabela extends JFrame {
 
     private void initGui() {
 
-        mainToolbar.add(btnAdd);
+     //   mainToolbar.add(btnAdd);
         mainToolbar.add(btnEdit);
         mainToolbar.add(btnDelete);
         add(mainToolbar, BorderLayout.NORTH);
@@ -129,7 +130,7 @@ public class VoznjaTabela extends JFrame {
                     Voznja voznja = TaxiSluzba.pronadjiVoznjuPoID(id);
                     String statusVoznje = (voznja.getStatus()).toString();
                     if (statusVoznje.equals("KREIRANA")){
-                        DodeljivanjeVoznjeForma dv = new DodeljivanjeVoznjeForma(voznja.getAdresaPolaska(),voznja.getAdresaDestinacije(),voznja.getMusterija().getKorisnickoIme());
+                        DodeljivanjeVoznjeForma dv = new DodeljivanjeVoznjeForma(voznja);
                         dv.setVisible(true);
 
                         TaxiSluzba.izmeniVoznju(voznja.getId(), voznja.getDatumKreirnja(), voznja.getAdresaPolaska(), voznja.getAdresaDestinacije(),

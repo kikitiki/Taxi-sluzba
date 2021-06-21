@@ -18,7 +18,9 @@ import java.util.List;
 
 public class VoznjaTabelaVozac extends JFrame {
         private JToolBar mainToolbar = new JToolBar();
-        private JButton btnIzmeni= new JButton("Izmeni voznju");
+        private JButton btnPrihvatiVoznju= new JButton("Prihvati voznju");
+        private JButton btnOdbijVoznju = new JButton("Odbij voznju");
+        private JButton btnZavrsiVoznju = new JButton("Zavrsi voznju");
 
         private DefaultTableModel tableModel;
         private JTable VoznjaTabelaVozac;
@@ -38,7 +40,10 @@ public class VoznjaTabelaVozac extends JFrame {
         }
 
     private void  initMenu(){
-        mainToolbar.add(btnIzmeni);
+        mainToolbar.add(btnPrihvatiVoznju);
+        mainToolbar.add(btnOdbijVoznju);
+        mainToolbar.add(btnZavrsiVoznju);
+
         add(mainToolbar, BorderLayout.NORTH);
         mainToolbar.setFloatable(false);
 
@@ -47,8 +52,6 @@ public class VoznjaTabelaVozac extends JFrame {
 
         String[] zaglavlja = new String[]{"Id", "Datum kreiranja", "Adresa polaska", "Adresa Destinacije", "Status voznje", "Broj km", "Trajanje voznje", "Korisnik", "Vozac", "Tip kreirane voznje"};
         Object[][] sadrzaj = new Object[nadjeneVoznje.size()][zaglavlja.length];
-
-//        List<Voznja> sveVoznje = TaxiSluzba.getSveVoznje();
 
         for (int i = 0; i < nadjeneVoznje.size(); i++) {
             Voznja voznja =nadjeneVoznje.get(i);
@@ -84,7 +87,7 @@ public class VoznjaTabelaVozac extends JFrame {
 
     private void initActions() {
 
-        btnIzmeni.addActionListener(new ActionListener() {
+        btnPrihvatiVoznju.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
 
@@ -99,9 +102,11 @@ public class VoznjaTabelaVozac extends JFrame {
                     int id = (int) tableModel.getValueAt(red, 0);
                     Voznja voznja = TaxiSluzba.pronadjiVoznjuPoID(id);
                     String statusVoznje = (voznja.getStatus()).toString();
-                    if (statusVoznje.equals("KREIRANA")){
-                        DodeljivanjeVoznjeForma dv = new DodeljivanjeVoznjeForma(voznja.getAdresaPolaska(),voznja.getAdresaDestinacije(),voznja.getMusterija().getKorisnickoIme());
-                        dv.setVisible(true);
+                    if (statusVoznje.equals("DODELJENA")){
+//                        DodeljivanjeVoznjeForma dv = new DodeljivanjeVoznjeForma(voznja);
+//                        dv.setVisible(true);
+                        PrihvatiVoznjuForma pv =new PrihvatiVoznjuForma(voznja);
+                        pv.setVisible(true);
 
                         TaxiSluzba.izmeniVoznju(voznja.getId(), voznja.getDatumKreirnja(), voznja.getAdresaPolaska(), voznja.getAdresaDestinacije(),
                                 voznja.getStatus(), voznja.getBrojKM(), voznja.getTrajanjeVoznje(), voznja.getMusterija(), voznja.getVozac());

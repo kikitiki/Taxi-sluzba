@@ -1,10 +1,8 @@
 package gui;
 
 import automobil.Automobil;
-import automobil.VrstaAutomobila;
 import korisnici.Korisnik;
 import korisnici.Pol;
-import korisnici.TipKorisnika;
 import korisnici.Vozac;
 import net.miginfocom.swing.MigLayout;
 import taxiSluzba.TaxiSluzba;
@@ -12,12 +10,11 @@ import taxiSluzba.TaxiSluzba;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 import java.util.List;
 
 import static taxiSluzba.TaxiSluzba.korisniciFajl;
 
-public class VozaciForma extends JFrame {
+public class DodajIzmeniVozaca extends JFrame {
 
     private JLabel lblIme = new JLabel("Ime");
     private  JTextField txtIme = new JTextField(20);
@@ -48,7 +45,7 @@ public class VozaciForma extends JFrame {
     private TaxiSluzba taxiSluzba;
     private Vozac vozac;
 
-    public VozaciForma(TaxiSluzba taxiSluzba,Vozac vozac){
+    public DodajIzmeniVozaca(TaxiSluzba taxiSluzba, Vozac vozac){
         this.taxiSluzba = taxiSluzba;
         this.vozac =vozac;
 
@@ -123,7 +120,6 @@ public class VozaciForma extends JFrame {
                     String brojClanskeKarte = txtClanskakarta.getText().trim();
                     Automobil automobil =(Automobil)comboBoxAutomobil.getSelectedItem();
                     Double plata = Double.valueOf(txtPlata.getText().trim());
-                   // double plata = ;
 
                     if (vozac == null){//DODAVANJE:
                         taxiSluzba.kreirajVozaca(jmbg,korisnickoIme,sifra,ime,prezime,adresa,pol,brojTelefona,plata,automobil,brojClanskeKarte);
@@ -139,9 +135,17 @@ public class VozaciForma extends JFrame {
                         vozac.setBrojClanskeKarte(brojClanskeKarte);
                     }
                     TaxiSluzba.sacuvajKorisnike(korisniciFajl);
-                    VozaciForma.this.dispose();
-                    VozaciForma.this.setVisible(false);
+                    DodajIzmeniVozaca.this.dispose();
+                    DodajIzmeniVozaca.this.setVisible(false);
                 }
+            }
+        });
+
+        btnCancel.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                DodajIzmeniVozaca.this.dispose();
+                DodajIzmeniVozaca.this.setVisible(false);
             }
         });
      }
@@ -163,23 +167,19 @@ public class VozaciForma extends JFrame {
         boolean ok = true;
         String poruka = "Molimo popravite sledece greske u unosu:\n";
         if(txtIme.getText().trim().equals("")){
-            System.out.println("1");
             poruka += "- Unesite ime\n";
             ok = false;
         }
         if(txtPrezime.getText().trim().equals("")){
-            System.out.println("2");
             poruka += "- Unesite prezime\n";
             ok = false;
         }
          if(txtKorisnickoIme.getText().trim().equals("")){
-             System.out.println("3");
              poruka += "- Unesite korisnicko ime\n";
              ok = false;
          }else if (vozac != null){
              String korisnickoIme = txtKorisnickoIme.getText().trim();
              Korisnik pronadjeni = taxiSluzba.pronadjiVozacaPoKorisnickomImenu(korisnickoIme);
-             System.out.println("4");
              if (pronadjeni == null){
                  poruka += "Vozac sa tim korisnickim imenom vec postoji\n";
                  System.out.println("5");
@@ -187,17 +187,14 @@ public class VozaciForma extends JFrame {
              }
          }
          if(txtAdresa.getText().trim().equals("")){
-             System.out.println("6");
              poruka += "- Unesite adresu\n";
              ok = false;
          }
          if(txtBrojTelefona.getText().trim().equals("")){
-             System.out.println("7");
              poruka += "- Unesite broj telefona\n";
              ok = false;
          }
          if(txtJmbg.getText().trim().equals("")){
-             System.out.println("8");
              poruka += "- Unesite jmbg\n";
              ok = false;
          }
@@ -212,9 +209,13 @@ public class VozaciForma extends JFrame {
              poruka += "- Unesite sifru\n";
              ok = false;
          }
+         if (txtPlata.getText().trim().equals("")){
+             poruka += "- Unesite platu\n";
+                 ok = false;
+         }
+
 
          if (ok == false){
-             System.out.println("10");
              JOptionPane.showMessageDialog(null,poruka,"Neispravni podaci",JOptionPane.WARNING_MESSAGE);
          }
          System.out.println(ok);

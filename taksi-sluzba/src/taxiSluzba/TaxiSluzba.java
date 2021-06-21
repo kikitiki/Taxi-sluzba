@@ -22,6 +22,7 @@ public class TaxiSluzba {
     private static List<Automobil> sviAutomobili = new ArrayList<Automobil>();
     private static List<Voznja> sveVoznje = new ArrayList<Voznja>();
     private static List idAutomobili  = new ArrayList();
+    private static List<String> korisnickaImena= new ArrayList<>();
     private static final double CENA_START = 100.0;
     private static final double CENA_PO_KM = 50.0;
 
@@ -700,6 +701,15 @@ public class TaxiSluzba {
         }
         return pronadjenVozac;
     }
+
+    public static List<String> pronadjiVozacePoKorisnickomImenu() {
+
+        for (Vozac v: TaxiSluzba.dobaviVozace()) {
+            korisnickaImena.add(v.getKorisnickoIme());
+            }
+        return korisnickaImena;
+    }
+
 
     public Korisnik pronadjiMusterijuPoKorisnickomImenu(String korisnickoIme) {
         Korisnik pronadjenaMusterija = null;
