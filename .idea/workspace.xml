@@ -7,11 +7,13 @@
       <change beforePath="$PROJECT_DIR$/taksi-sluzba/src/fajlovi/voznje.txt" beforeDir="false" afterPath="$PROJECT_DIR$/taksi-sluzba/src/fajlovi/voznje.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/taksi-sluzba/src/gui/DispecerProzor.java" beforeDir="false" afterPath="$PROJECT_DIR$/taksi-sluzba/src/gui/DispecerProzor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/taksi-sluzba/src/gui/DodeljivanjeVoznjeForma.java" beforeDir="false" afterPath="$PROJECT_DIR$/taksi-sluzba/src/gui/DodeljivanjeVoznjeForma.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/taksi-sluzba/src/gui/VozaciForma.java" beforeDir="false" afterPath="$PROJECT_DIR$/taksi-sluzba/src/gui/DodajIzmeniVozaca.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/taksi-sluzba/src/gui/VozaciTabela.java" beforeDir="false" afterPath="$PROJECT_DIR$/taksi-sluzba/src/gui/VozaciTabela.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/taksi-sluzba/src/gui/GlavniProzor.java" beforeDir="false" afterPath="$PROJECT_DIR$/taksi-sluzba/src/gui/GlavniProzor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/taksi-sluzba/src/gui/MusterijaProzor.java" beforeDir="false" afterPath="$PROJECT_DIR$/taksi-sluzba/src/gui/MusterijaProzor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/taksi-sluzba/src/gui/PrihvatiVoznjuForma.java" beforeDir="false" afterPath="$PROJECT_DIR$/taksi-sluzba/src/gui/PrihvatiVoznjuForma.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/taksi-sluzba/src/gui/VozaciProzor.java" beforeDir="false" afterPath="$PROJECT_DIR$/taksi-sluzba/src/gui/VozaciProzor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/taksi-sluzba/src/gui/VoznjaTabela.java" beforeDir="false" afterPath="$PROJECT_DIR$/taksi-sluzba/src/gui/VoznjaTabela.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/taksi-sluzba/src/gui/VoznjaTabelaVozac.java" beforeDir="false" afterPath="$PROJECT_DIR$/taksi-sluzba/src/gui/VoznjaTabelaVozac.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/taksi-sluzba/src/main/Taxi_Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/taksi-sluzba/src/main/Taxi_Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/taksi-sluzba/src/korisnici/Vozac.java" beforeDir="false" afterPath="$PROJECT_DIR$/taksi-sluzba/src/korisnici/Vozac.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/taksi-sluzba/src/taxiSluzba/TaxiSluzba.java" beforeDir="false" afterPath="$PROJECT_DIR$/taksi-sluzba/src/taxiSluzba/TaxiSluzba.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

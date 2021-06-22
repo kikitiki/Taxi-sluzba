@@ -24,9 +24,12 @@ public class MusterijaProzor extends JFrame {
     private JLabel lblAdresaDolaska = new JLabel("Adresa dolaska:");
     private JTextField txtAdresaDolaska = new JTextField(20);
     private JButton btnPoruci = new JButton("Poruci:");
+    private JButton btnCancel = new JButton("Odustani");
+    private JButton btnLogOut =new JButton("Logout");
+    private TaxiSluzba taxiSluzba;
 
-    public MusterijaProzor( Korisnik ulogovani){
-
+    public MusterijaProzor( Korisnik ulogovani, TaxiSluzba taxiSluzba){
+        this.taxiSluzba = taxiSluzba;
         setTitle("Dobrodosli ulogovani ste kao korisnik" + ulogovani.getKorisnickoIme() );
         setSize(300,300);
         setResizable(true);
@@ -50,6 +53,8 @@ public class MusterijaProzor extends JFrame {
         add(lblAdresaDolaska);
         add(txtAdresaDolaska);
         add(btnPoruci);
+        add(btnCancel);
+        add(btnLogOut);
 
 
     }
@@ -65,6 +70,23 @@ public class MusterijaProzor extends JFrame {
                         0.0,0,ulogovani);
                 JOptionPane.showMessageDialog(null, "Uspesno ste porucili voznju",
                         "Uspesno", JOptionPane.INFORMATION_MESSAGE);
+            }
+        });
+
+        btnCancel.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                MusterijaProzor.this.dispose();
+                MusterijaProzor.this.setVisible(false);
+            }
+        });
+
+        btnLogOut.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                MusterijaProzor.this.dispose();
+                LoginProzor loginProzor = new LoginProzor(taxiSluzba);
+                loginProzor.setVisible(true);
             }
         });
     }

@@ -20,7 +20,7 @@ public class GlavniProzor extends JFrame {
         } else if (ulogovani.getTipKorisnika().equals(TipKorisnika.MUSTERIJA)) {
             if (ulogovani.getTipKorisnika().equals(TipKorisnika.MUSTERIJA)) {
                 MusterijaProzor mp;
-                mp = new MusterijaProzor(ulogovani);
+                mp = new MusterijaProzor(ulogovani, taxiSluzba);
                 mp.setVisible(true);
             }
         }else {

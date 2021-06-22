@@ -22,15 +22,16 @@ public class DodeljivanjeVoznjeForma extends JFrame {
     private JTextField txtAdresaPolaska = new JTextField(20);
     private JLabel lblAdresaDestinacije = new JLabel("Adresa destinacije");
     private JTextField txtAdresaDestinacije = new JTextField(20);
-   private JLabel lblMusterija = new JLabel("Musterija");
+    private JLabel lblMusterija = new JLabel("Musterija");
     private JTextField txtMusterija = new JTextField(20);
     private JLabel lblStatusVoznje = new JLabel("Status");
-    private JLabel lblVozaci = new JLabel("Vozaci");
     private JTextField txtStatusVoznje = new JTextField("DODELJENA");
+    private JLabel lblVozaci = new JLabel("Vozaci");
     private  JComboBox<String> comboBoxVozaci = new JComboBox<String>();
 
     private TaxiSluzba taxiSluzba;
     private Voznja voznja;
+    private Vozac vozac;
 
     private JButton btnOk = new JButton("OK");
     private JButton btnCancel = new JButton("Cancel");
@@ -39,12 +40,13 @@ public class DodeljivanjeVoznjeForma extends JFrame {
     public DodeljivanjeVoznjeForma(Voznja voznja){
         this.taxiSluzba = taxiSluzba;
         this.voznja=voznja;
-
+        this.vozac = vozac;
         txtStatusVoznje.setEditable(false);
         txtAdresaPolaska.setEditable(false);
         txtAdresaDestinacije.setEditable(false);
-        txtStatusVoznje.setEditable(false);
+        //txtStatusVoznje.setEditable(false);
         txtDatum.setEditable(false);
+        txtDatum.setText(String.valueOf(voznja.getDatumKreirnja()));
         txtAdresaPolaska.setText(voznja.getAdresaPolaska());
         txtAdresaDestinacije.setText(voznja.getAdresaDestinacije());
 
@@ -59,7 +61,6 @@ public class DodeljivanjeVoznjeForma extends JFrame {
         setSize(700,600);
         setResizable(true);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-        txtStatusVoznje.setEditable(false);
         setLocationRelativeTo(null);
         initMenu();
         initActions();
@@ -78,8 +79,8 @@ public class DodeljivanjeVoznjeForma extends JFrame {
         add(txtAdresaPolaska);
         add(lblAdresaDestinacije);
         add(txtAdresaDestinacije);
-        add(lblStatusVoznje);
-        add(txtStatusVoznje);
+        //add(lblStatusVoznje);
+        //add(txtStatusVoznje);
         add(lblVozaci);
         add(comboBoxVozaci);
         add(btnOk);
@@ -95,8 +96,7 @@ public class DodeljivanjeVoznjeForma extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 StatusVoznje statusVoznje = StatusVoznje.valueOf(txtStatusVoznje.getText().trim());
                 Vozac vozac =  pronadjiVozacaPoKorisnickomImenu(String.valueOf(comboBoxVozaci.getSelectedItem()));
-
-
+                
                 izmeniVoznju(voznja.getId(),voznja.getDatumKreirnja(),voznja.getAdresaPolaska(),voznja.getAdresaDestinacije(),statusVoznje,voznja.getBrojKM(),voznja.getTrajanjeVoznje(),voznja.getMusterija(),vozac);
                 DodeljivanjeVoznjeForma.this.dispose();
                 DodeljivanjeVoznjeForma.this.setVisible(false);
@@ -114,13 +114,4 @@ public class DodeljivanjeVoznjeForma extends JFrame {
         });
 
     }
-
-//    private void popuniComboBox(){
-//        List<Vozac> vozaciZaComboBox = dobaviVozace();
-//        for (Vozac v : vozaciZaComboBox) {
-//            comboBoxVoznje.addItem(v.getKorisnickoIme());
-//        }
-//    }
-
-
 }

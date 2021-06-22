@@ -27,10 +27,12 @@ public class VoznjaTabelaVozac extends JFrame {
 
         private TaxiSluzba taxiSluzba;
         private Korisnik ulogovaniKorisnik;
+        private Voznja voznja;
 
         public VoznjaTabelaVozac(TaxiSluzba taxiSluzba, Korisnik ulogovaniKorisnik) {
             this.taxiSluzba = taxiSluzba;
             this.ulogovaniKorisnik = ulogovaniKorisnik;
+            this.voznja = voznja;
             setSize(700, 500);
             setResizable(true);
             setDefaultCloseOperation(DISPOSE_ON_CLOSE);
@@ -64,7 +66,7 @@ public class VoznjaTabelaVozac extends JFrame {
             sadrzaj[i][5] = voznja.getBrojKM();
             sadrzaj[i][6] = voznja.getTrajanjeVoznje();
             sadrzaj[i][7] = voznja.getMusterija().getKorisnickoIme();
-            sadrzaj[i][8] = voznja.getVozac();
+            sadrzaj[i][8] = voznja.getVozac().getKorisnickoIme();
             sadrzaj[i][9] = voznja.getTipKreiraneVoznje();
         }
 
@@ -81,7 +83,6 @@ public class VoznjaTabelaVozac extends JFrame {
 
         JScrollPane scrollPane = new JScrollPane(VoznjaTabelaVozac);
         add(scrollPane, BorderLayout.CENTER);
-
 
     }
 
@@ -103,19 +104,67 @@ public class VoznjaTabelaVozac extends JFrame {
                     Voznja voznja = TaxiSluzba.pronadjiVoznjuPoID(id);
                     String statusVoznje = (voznja.getStatus()).toString();
                     if (statusVoznje.equals("DODELJENA")){
-//                        DodeljivanjeVoznjeForma dv = new DodeljivanjeVoznjeForma(voznja);
-//                        dv.setVisible(true);
-                        PrihvatiVoznjuForma pv =new PrihvatiVoznjuForma(voznja);
+
+                        PrihvatiVoznjuForma pv =new PrihvatiVoznjuForma(voznja,taxiSluzba);
                         pv.setVisible(true);
 
-                        TaxiSluzba.izmeniVoznju(voznja.getId(), voznja.getDatumKreirnja(), voznja.getAdresaPolaska(), voznja.getAdresaDestinacije(),
-                                voznja.getStatus(), voznja.getBrojKM(), voznja.getTrajanjeVoznje(), voznja.getMusterija(), voznja.getVozac());
                     }else {
                         JOptionPane.showMessageDialog(null, "Molimo izaberite red ",
                                 "Greska", JOptionPane.WARNING_MESSAGE);
                     }
 
                 }
+            }
+        });
+
+        btnOdbijVoznju.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                int red = VoznjaTabelaVozac.getSelectedRow();
+                if (red == -1){
+                    JOptionPane.showMessageDialog(null,"Molimo izaberite red",
+                            "Greska",JOptionPane.WARNING_MESSAGE);
+                }else {
+                    int id = (int) tableModel.getValueAt(red,0);
+                    Voznja voznja =TaxiSluzba.pronadjiVoznjuPoID(id);
+                    String statusVoznje = (voznja.getStatus().toString());
+                    if (statusVoznje.equals("DODELJENA")){
+                        OdbijVzonjuForma odbijVzonjuForma = new OdbijVzonjuForma(voznja,taxiSluzba);
+                        odbijVzonjuForma.setVisible(true);
+
+                    }else {
+                        JOptionPane.showMessageDialog(null,"Molimo izaberite red",
+                                "Greska",JOptionPane.WARNING_MESSAGE);
+                    }
+                }
+
+            }
+        });
+
+        btnZavrsiVoznju.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                int red = VoznjaTabelaVozac.getSelectedRow();
+                if (red == -1){
+                    JOptionPane.showMessageDialog(null,"Molimo izaberite red",
+                            "Greska",JOptionPane.WARNING_MESSAGE);
+                }else {
+                    int id = (int) tableModel.getValueAt(red,0);
+                    Voznja voznja =TaxiSluzba.pronadjiVoznjuPoID(id);
+                    String statusVoznje = (voznja.getStatus().toString());
+                    if (statusVoznje.equals("PRIHVACENA")){
+                        ZavrsiVoznjuForma zavrsiVoznjuForma = new ZavrsiVoznjuForma(voznja,taxiSluzba);
+                        zavrsiVoznjuForma.setVisible(true);
+
+                    }else {
+                        JOptionPane.showMessageDialog(null,"Molimo izaberite red",
+                                "Greska",JOptionPane.WARNING_MESSAGE);
+                    }
+
+                }
+
             }
         });
 

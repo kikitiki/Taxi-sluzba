@@ -524,16 +524,6 @@ public class TaxiSluzba {
         return null;
     }
 
-//    public static List<Integer> idAutomobila(Automobil automobil) {
-//         List<Automobil> sviAutomobili =pronadjiSlobodneAutomobile();
-//         List<Integer> slobodniAutomobiliId = new ArrayList<>();
-//         for (Automobil a : sviAutomobili){
-//           int idAutomobila =  a.getId();
-//           slobodniAutomobiliId.add(idAutomobila);
-//
-//         }
-//        return slobodniAutomobiliId;
-//    }
 
     public Voznja binarnaPretragaVoznjePoId(List<Voznja> voznje,int levi,int desni,int id){
         if (desni >= levi){

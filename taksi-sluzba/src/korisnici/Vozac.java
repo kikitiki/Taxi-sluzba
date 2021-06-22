@@ -56,12 +56,12 @@ public class Vozac extends Korisnik {
 
     @Override
     public String toString() {
-
-        return "Vozac{" +
-                "brojClanskeKarte='" + brojClanskeKarte + '\'' +
-                ", plata=" + plata +
-                ", taxi=" + taxi +
-                '}';
+        return this.getKorisnickoIme();
+//        return "Vozac{" +
+//                "brojClanskeKarte='" + brojClanskeKarte + '\'' +
+//                ", plata=" + plata +
+//                ", taxi=" + taxi +
+//                '}';
     }
 
     @Override

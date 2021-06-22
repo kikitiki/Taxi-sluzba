@@ -1,6 +1,5 @@
 package gui;
 
-import korisnici.Vozac;
 import net.miginfocom.swing.MigLayout;
 import taxiSluzba.TaxiSluzba;
 import voznja.StatusVoznje;
@@ -12,22 +11,26 @@ import java.awt.event.ActionListener;
 
 import static taxiSluzba.TaxiSluzba.izmeniVoznju;
 
-public class PrihvatiVoznjuForma extends JFrame {
+public class OdbijVzonjuForma extends JFrame{
 
+    //private JLabel lblStatusVoznje = new JLabel("Status voznje");
+    //private JTextField txtStatusVoznje = new JTextField("ODBIJENA");
     private JButton btnOk = new JButton("OK");
     private JButton btnCancel = new JButton("Cancel");
 
     private TaxiSluzba taxiSluzba;
     private Voznja voznja;
 
-    public PrihvatiVoznjuForma(Voznja voznja,TaxiSluzba taxiSluzba){
+    public OdbijVzonjuForma(Voznja voznja,TaxiSluzba taxiSluzba){
+        this.voznja = voznja;
         this.taxiSluzba = taxiSluzba;
-        this.voznja =voznja;
+       // txtStatusVoznje.setEditable(false);
 
-        setTitle("Prihvatanje voznje");
+        setTitle("Odbijanje voznje");
         setSize(300,300);
         setResizable(true);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+       // txtStatusVoznje.setEditable(false);
         setLocationRelativeTo(null);
         initMenu();
         initActions();
@@ -38,6 +41,8 @@ public class PrihvatiVoznjuForma extends JFrame {
         MigLayout mig = new MigLayout("wrap 2","[][]","[]10[][]10[]");
         setLayout(mig);
 
+//        add(lblStatusVoznje);
+//        add(txtStatusVoznje);
         add(btnOk);
         add(btnCancel);
     }
@@ -46,9 +51,12 @@ public class PrihvatiVoznjuForma extends JFrame {
         btnOk.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                taxiSluzba.prihvatiVoznju(voznja.getId());
-                PrihvatiVoznjuForma.this.dispose();
-                PrihvatiVoznjuForma.this.setVisible(false);
+               // StatusVoznje statusVoznje = StatusVoznje.valueOf(txtStatusVoznje.getText().trim());
+
+            //    izmeniVoznju(voznja.getId(),voznja.getDatumKreirnja(),voznja.getAdresaPolaska(),voznja.getAdresaDestinacije(),statusVoznje,voznja.getBrojKM(),voznja.getTrajanjeVoznje(),voznja.getMusterija(),voznja.getVozac());
+                taxiSluzba.odbijVoznju(voznja.getId());
+                OdbijVzonjuForma.this.dispose();
+                OdbijVzonjuForma.this.setVisible(false);
             }
 
 
@@ -57,9 +65,11 @@ public class PrihvatiVoznjuForma extends JFrame {
         btnCancel.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                PrihvatiVoznjuForma.this.dispose();
-                PrihvatiVoznjuForma.this.setVisible(false);
+                OdbijVzonjuForma.this.dispose();
+                OdbijVzonjuForma.this.setVisible(false);
             }
         });
+
     }
+
 }

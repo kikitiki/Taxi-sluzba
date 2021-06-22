@@ -11,6 +11,7 @@ public class VozaciProzor extends JFrame {
     private JMenuBar mainMenu = new JMenuBar();
     private JButton sveVoznje = new JButton("Sve voznje");
     private JButton aukcija = new JButton("Aukcija");
+    private JButton btnLogout = new JButton("Logout");
     private TaxiSluzba taxiSluzba;
     private Korisnik ulogovaniKorisnik;
 
@@ -31,6 +32,7 @@ public class VozaciProzor extends JFrame {
         setJMenuBar(mainMenu);
         mainMenu.add(sveVoznje);
         mainMenu.add(aukcija);
+        mainMenu.add(btnLogout);
     }
     private void initActions(){
 
@@ -39,6 +41,15 @@ public class VozaciProzor extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 VoznjaTabelaVozac vv = new VoznjaTabelaVozac(taxiSluzba, ulogovaniKorisnik);
                 vv.setVisible(true);
+            }
+        });
+
+        btnLogout.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                VozaciProzor.this.dispose();
+                LoginProzor loginProzor = new LoginProzor(taxiSluzba);
+                loginProzor.setVisible(true);
             }
         });
 

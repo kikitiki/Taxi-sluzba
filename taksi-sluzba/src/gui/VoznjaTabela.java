@@ -29,6 +29,7 @@ public class VoznjaTabela extends JFrame {
 
     private TaxiSluzba taxiSluzba;
     private Voznja voznja;
+    private Vozac vozac;
 
     public VoznjaTabela() {
         // this.taxiSluzba = taxiSluzba;
@@ -118,9 +119,6 @@ public class VoznjaTabela extends JFrame {
 
 
                 int red = voznjeTabela.getSelectedRow();
-//                int id = (int) tableModel.getValueAt(red, 0);
-//                Voznja voznja = TaxiSluzba.pronadjiVoznjuPoID(id);
-//                StatusVoznje statusVoznje = voznja.getStatus();
 
                 if (red == -1 ) {
                     JOptionPane.showMessageDialog(null, "Molimo izaberite red ",
