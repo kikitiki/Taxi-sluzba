@@ -2,13 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="acbcea89-9652-4c59-b1c6-1d851b140c67" name="Default Changelist" comment="proba">
-      <change afterPath="$PROJECT_DIR$/taksi-sluzba/src/gui/DnevniProzor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/taksi-sluzba/src/gui/IzvestajiProzor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/taksi-sluzba/src/gui/PronadjeneVoznje.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/taksi-sluzba/src/gui/NedeljniProzor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/taksi-sluzba/fajlovi/voznje.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/taksi-sluzba/fajlovi/voznje.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/taksi-sluzba/src/fajlovi/voznje.txt" beforeDir="false" afterPath="$PROJECT_DIR$/taksi-sluzba/src/fajlovi/voznje.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/taksi-sluzba/src/gui/DispecerProzor.java" beforeDir="false" afterPath="$PROJECT_DIR$/taksi-sluzba/src/gui/DispecerProzor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/taksi-sluzba/src/gui/IzvestajiProzor.java" beforeDir="false" afterPath="$PROJECT_DIR$/taksi-sluzba/src/gui/IzvestajiProzor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/taksi-sluzba/src/gui/PronadjeneVoznje.java" beforeDir="false" afterPath="$PROJECT_DIR$/taksi-sluzba/src/gui/PronadjeneVoznje.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/taksi-sluzba/src/taxiSluzba/TaxiSluzba.java" beforeDir="false" afterPath="$PROJECT_DIR$/taksi-sluzba/src/taxiSluzba/TaxiSluzba.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

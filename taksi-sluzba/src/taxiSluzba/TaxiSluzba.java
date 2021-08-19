@@ -882,6 +882,24 @@ public class TaxiSluzba {
             ukupnoTrajanjeVoznji += voznja.getTrajanjeVoznje();
         }return ukupnoTrajanjeVoznji / pronadjeneVoznje.size();
     }
+    public static double ukupnaZarada(){
+        double ukupnaZarada = 0;
+        for (Voznja voznja: pronadjeneVoznje){
+            double cenaPoKm = TaxiSluzba.CENA_PO_KM;
+            double cenaStarta =TaxiSluzba.CENA_START;
+            ukupnaZarada += ((voznja.getBrojKM() * cenaPoKm) + cenaStarta);
+
+        }return ukupnaZarada;
+    }
+    public static double prosecnaZarada(){
+        double ukupnaZarada = 0;
+        for (Voznja voznja: pronadjeneVoznje){
+            double cenaPoKm = TaxiSluzba.CENA_PO_KM;
+            double cenaStarta = TaxiSluzba.CENA_START;
+            ukupnaZarada += ((voznja.getBrojKM() * cenaPoKm) + cenaStarta);
+
+        }return ukupnaZarada / pronadjeneVoznje.size();
+    }
 
     public static ArrayList<Voznja> VoznjeTelefonom(){
         ArrayList<Voznja> voznje = new ArrayList<Voznja>(){};
@@ -891,6 +909,14 @@ public class TaxiSluzba {
             }
         }
         return voznje;
+    }
+    public static ArrayList<Voznja> VoznjeAplikacijom(){
+        ArrayList<Voznja> voznje = new ArrayList<Voznja>();
+        for (Voznja voznja: pronadjeneVoznje){
+            if (voznja.getTipKreiraneVoznje().equals(TipKreiraneVoznje.PUTEM_APLIKACIJE)){
+                voznje.add(voznja);
+            }
+        }return voznje;
     }
 
 //    public static ArrayList<Voznja> VoznjeTelefonom(){
@@ -914,16 +940,9 @@ public class TaxiSluzba {
         }
         return pronadjeneVoznje;
 
-//        if (pronadjeneVoznje.size() == 0) {
-//            System.out.println("Nema voznji za ovaj period!");
-//            return;
-//        }
-//        String datumZaIspisUIzvestaju = dan.toString();
-//        generisiIzvestaj(pronadjeneVoznje, datumZaIspisUIzvestaju);
     }
-
-    public void nedeljniIzvestaj(int nedelja, int godina) {
-        List<Voznja> pronadjeneVoznje = new ArrayList<Voznja>();
+    public static ArrayList<Voznja> nedeljniIzvestaj(int nedelja, int godina) {
+        ArrayList<Voznja> pronadjeneVoznje = new ArrayList<>();
 
         for (Voznja voznja : sveVoznje) {
             WeekFields weekFields = WeekFields.of(Locale.getDefault());
@@ -933,12 +952,7 @@ public class TaxiSluzba {
                 pronadjeneVoznje.add(voznja);
             }
         }
-        if (pronadjeneVoznje.size() == 0) {
-            System.out.println("Nema voznji za ovaj period!");
-            return;
-        }
-        String datumZaIspisUIzvestaju = String.format("%d/%d", nedelja, godina);
-//        generisiIzvestaj(pronadjeneVoznje, datumZaIspisUIzvestaju);
+        return pronadjeneVoznje;
     }
 
     public void mesecniIzvestaj(int mesec, int godina) {

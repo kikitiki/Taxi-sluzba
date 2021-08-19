@@ -1,6 +1,6 @@
-1|29-04-2021 22:48|adresa polaska|destiancija|ZAVRSENA|44.0|44|alek|ana|PUTEM_TELEFONA|false
-2|29-04-2021 22:54|adresa polaska|destiancija|ZAVRSENA|0.0|0|alek|null|PUTEM_TELEFONA|false
-3|29-04-2021 23:01|adresa polaska|destiancija|ZAVRSENA|0.0|0|alek|null|PUTEM_TELEFONA|false
+1|01-01-2021 22:48|adresa polaska|destiancija|ZAVRSENA|10.0|40|alek|ana|PUTEM_TELEFONA|false
+2|29-04-2021 22:54|adresa polaska|destiancija|ZAVRSENA|3.0|3|alek|null|PUTEM_TELEFONA|false
+3|29-04-2021 23:01|adresa polaska|destiancija|ZAVRSENA|1.0|4|alek|null|PUTEM_APLIKACIJE|false
 4|29-04-2021 23:01|Kisacka 15|Vrsacka 11|KREIRANA|0.0|0|iva|null|PUTEM_TELEFONA|false
 5|14-07-2021 00:00|adresa polaska|adresa destinacije|PRIHVACENA|0.0|0|alek|ana|PUTEM_TELEFONA|false
 6|14-08-2021 00:00|qweqwe|asdasd|KREIRANA|0.0|0|alek|null|PUTEM_TELEFONA|false
@@ -12,3 +12,4 @@
 12|15-06-2021 20:05|Petra Drapsina|Jevrejska 19|KREIRANA|0.0|0|alek|null|PUTEM_TELEFONA|false
 13|15-06-2021 20:44|Bate Brkica|Patria|ZAVRSENA|15.0|15|alek|ana|PUTEM_TELEFONA|false
 14|22-06-2021 23:52|Rumenacka 15|Patria|ODBIJENA|0.0|0|alek|null|PUTEM_TELEFONA|false
+15|19-08-2021 17:44|adresa1|adresa2|ZAVRSENA|3.0|20|alek|mile|PUTEM_TELEFONA|false
