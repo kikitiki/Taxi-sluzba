@@ -48,7 +48,7 @@ public class PronadjeneVoznje extends JFrame {
         voznjeApl = String.valueOf(TaxiSluzba.VoznjeAplikacijom().size());
         ukupnaZarada = String.valueOf(TaxiSluzba.ukupnaZarada());
         prosecnaZarada = String.valueOf(TaxiSluzba.prosecnaZarada());
-        setTitle("Dnevni izvestaj");
+        setTitle("Izvestaj");
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null);
         setSize(500,500);

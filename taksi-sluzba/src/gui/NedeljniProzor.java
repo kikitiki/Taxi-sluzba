@@ -23,7 +23,7 @@ public class NedeljniProzor extends JFrame {
     private JButton btnPretraga = new JButton("pretrazi");
 
     public NedeljniProzor(){
-        setTitle("Sumirane statistike za voznje");
+        setTitle("Sumirane statistike za nedeljne voznje");
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null);
         setSize(500,500);

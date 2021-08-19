@@ -96,17 +96,15 @@ public class IzvestajiProzor extends JFrame {
             };
         });
 
-//        btnPretraga.addActionListener(e -> {
-//            try{
-//                DnevniProzor pronadjeneVoznje = new DnevniProzor(date);
-//                pronadjeneVoznje.setVisible(true);
-//            }
-//            catch(DateTimeParseException ex) {
-//                System.out.println(ex.getMessage());
-//            };
-//        });
-
-
+        btnMesecni.addActionListener(e -> {
+            try{
+                MesecniProzor pronadjeneVoznje = new MesecniProzor();
+                pronadjeneVoznje.setVisible(true);
+            }
+            catch(DateTimeParseException ex) {
+                System.out.println(ex.getMessage());
+            };
+        });
 
         btnLogout.addActionListener(new ActionListener() {
             @Override

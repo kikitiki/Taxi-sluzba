@@ -955,8 +955,8 @@ public class TaxiSluzba {
         return pronadjeneVoznje;
     }
 
-    public void mesecniIzvestaj(int mesec, int godina) {
-        List<Voznja> pronadjeneVoznje = new ArrayList<Voznja>();
+    public static ArrayList<Voznja> mesecniIzvestaj(int mesec, int godina) {
+        ArrayList<Voznja> pronadjeneVoznje = new ArrayList<Voznja>();
         for (Voznja voznja : sveVoznje) {
             if (voznja.getStatus().equals(StatusVoznje.ZAVRSENA) &&
                     voznja.getDatumKreirnja().getYear() == godina &&
@@ -964,11 +964,12 @@ public class TaxiSluzba {
                 pronadjeneVoznje.add(voznja);
             }
         }
-        if (pronadjeneVoznje.size() == 0) {
-            System.out.println("Nema voznji za ovaj period!");
-            return;
-        }
-        String datumZaIspisUIzvestaju = String.format("%d/%d", mesec, godina);
+        return pronadjeneVoznje;
+//        if (pronadjeneVoznje.size() == 0) {
+//            System.out.println("Nema voznji za ovaj period!");
+//            return;
+//        }
+//        String datumZaIspisUIzvestaju = String.format("%d/%d", mesec, godina);
 //        generisiIzvestaj(pronadjeneVoznje, datumZaIspisUIzvestaju);
     }
 
