@@ -2,18 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="acbcea89-9652-4c59-b1c6-1d851b140c67" name="Default Changelist" comment="proba">
+      <change afterPath="$PROJECT_DIR$/taksi-sluzba/src/gui/DnevniProzor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/taksi-sluzba/src/gui/IzvestajiProzor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/taksi-sluzba/src/gui/PronadjeneVoznje.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/taksi-sluzba/fajlovi/voznje.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/taksi-sluzba/fajlovi/voznje.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/taksi-sluzba/src/fajlovi/voznje.txt" beforeDir="false" afterPath="$PROJECT_DIR$/taksi-sluzba/src/fajlovi/voznje.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/taksi-sluzba/src/gui/DispecerProzor.java" beforeDir="false" afterPath="$PROJECT_DIR$/taksi-sluzba/src/gui/DispecerProzor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/taksi-sluzba/src/gui/DodeljivanjeVoznjeForma.java" beforeDir="false" afterPath="$PROJECT_DIR$/taksi-sluzba/src/gui/DodeljivanjeVoznjeForma.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/taksi-sluzba/src/gui/GlavniProzor.java" beforeDir="false" afterPath="$PROJECT_DIR$/taksi-sluzba/src/gui/GlavniProzor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/taksi-sluzba/src/gui/MusterijaProzor.java" beforeDir="false" afterPath="$PROJECT_DIR$/taksi-sluzba/src/gui/MusterijaProzor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/taksi-sluzba/src/gui/PrihvatiVoznjuForma.java" beforeDir="false" afterPath="$PROJECT_DIR$/taksi-sluzba/src/gui/PrihvatiVoznjuForma.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/taksi-sluzba/src/gui/VozaciProzor.java" beforeDir="false" afterPath="$PROJECT_DIR$/taksi-sluzba/src/gui/VozaciProzor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/taksi-sluzba/src/gui/VoznjaTabela.java" beforeDir="false" afterPath="$PROJECT_DIR$/taksi-sluzba/src/gui/VoznjaTabela.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/taksi-sluzba/src/gui/VoznjaTabelaVozac.java" beforeDir="false" afterPath="$PROJECT_DIR$/taksi-sluzba/src/gui/VoznjaTabelaVozac.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/taksi-sluzba/src/korisnici/Vozac.java" beforeDir="false" afterPath="$PROJECT_DIR$/taksi-sluzba/src/korisnici/Vozac.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/taksi-sluzba/src/taxiSluzba/TaxiSluzba.java" beforeDir="false" afterPath="$PROJECT_DIR$/taksi-sluzba/src/taxiSluzba/TaxiSluzba.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -59,7 +54,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="jdk.selected.JAVA_MODULE" value="11" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../Java projekat-model/ReferentniProjekat" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../Projekat java/cool-taxi" />
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />

@@ -1,6 +1,6 @@
 1|29-04-2021 22:48|adresa polaska|destiancija|ZAVRSENA|44.0|44|alek|ana|PUTEM_TELEFONA|false
-2|29-04-2021 22:54|adresa polaska|destiancija|KREIRANA|0.0|0|alek|null|PUTEM_TELEFONA|false
-3|29-04-2021 23:01|adresa polaska|destiancija|KREIRANA|0.0|0|alek|null|PUTEM_TELEFONA|false
+2|29-04-2021 22:54|adresa polaska|destiancija|ZAVRSENA|0.0|0|alek|null|PUTEM_TELEFONA|false
+3|29-04-2021 23:01|adresa polaska|destiancija|ZAVRSENA|0.0|0|alek|null|PUTEM_TELEFONA|false
 4|29-04-2021 23:01|Kisacka 15|Vrsacka 11|KREIRANA|0.0|0|iva|null|PUTEM_TELEFONA|false
 5|14-07-2021 00:00|adresa polaska|adresa destinacije|PRIHVACENA|0.0|0|alek|ana|PUTEM_TELEFONA|false
 6|14-08-2021 00:00|qweqwe|asdasd|KREIRANA|0.0|0|alek|null|PUTEM_TELEFONA|false

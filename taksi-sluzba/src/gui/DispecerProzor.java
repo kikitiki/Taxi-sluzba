@@ -10,6 +10,8 @@ public class DispecerProzor extends JFrame {
     private JMenuBar mainMenu = new JMenuBar();
     private JButton vozaci = new JButton("Vozaci");
     private JButton voznje = new JButton("Voznje");
+    private JButton izvestaji = new JButton("Izvestaji");
+    private JButton pretragaVozaca = new JButton("Pretraga vozaca");
     private JButton btnLogout = new JButton("Logout");
 
     private TaxiSluzba taxiSluzba;
@@ -31,7 +33,9 @@ public class DispecerProzor extends JFrame {
         setJMenuBar(mainMenu);
         mainMenu.add(vozaci);
         mainMenu.add(voznje);
+        mainMenu.add(izvestaji);
         mainMenu.add(btnLogout);
+        mainMenu.add(pretragaVozaca);
     }
 
     private void initActions(){
@@ -48,6 +52,14 @@ public class DispecerProzor extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 VoznjaTabela vp = new VoznjaTabela();
                 vp.setVisible(true);
+            }
+        });
+        izvestaji.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                DispecerProzor.this.dispose();
+                IzvestajiProzor izvestajiProzor = new IzvestajiProzor(taxiSluzba);
+                izvestajiProzor.setVisible(true);
             }
         });
         btnLogout.addActionListener(new ActionListener() {
