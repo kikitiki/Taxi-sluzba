@@ -106,6 +106,16 @@ public class IzvestajiProzor extends JFrame {
             };
         });
 
+        btnGodisnji.addActionListener(e -> {
+            try{
+                GodisnjiProzor pronadjeneVoznje = new GodisnjiProzor();
+                pronadjeneVoznje.setVisible(true);
+            }
+            catch(DateTimeParseException ex) {
+                System.out.println(ex.getMessage());
+            };
+        });
+
         btnLogout.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
