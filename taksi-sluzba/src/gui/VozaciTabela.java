@@ -16,6 +16,7 @@ public class VozaciTabela extends JFrame {
     private JButton btnAdd = new JButton("Dodaj");
     private JButton btnDelete = new JButton("Obrisi");
     private JButton btnEdit = new JButton("Izmeni");
+    private JButton btnKombinovanaPretraga = new JButton(("Kombinovana pretraga"));
 
     private DefaultTableModel tableModel;
     private JTable vozaciTabela;
@@ -38,6 +39,7 @@ public class VozaciTabela extends JFrame {
         mainToolbar.add(btnAdd);
         mainToolbar.add(btnDelete);
         mainToolbar.add(btnEdit);
+        mainToolbar.add(btnKombinovanaPretraga);
         add(mainToolbar, BorderLayout.NORTH);
         mainToolbar.setFloatable(false);
 
@@ -131,6 +133,14 @@ public class VozaciTabela extends JFrame {
                         vf.setVisible(true);
                     }
                 }
+            }
+        });
+
+        btnKombinovanaPretraga.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                KombinovanaPretragaVozaca kombinovanaPretragaVozaca= new KombinovanaPretragaVozaca();
+                kombinovanaPretragaVozaca.setVisible(true);
             }
         });
 

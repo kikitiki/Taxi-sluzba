@@ -2,9 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="acbcea89-9652-4c59-b1c6-1d851b140c67" name="Default Changelist" comment="proba">
-      <change afterPath="$PROJECT_DIR$/taksi-sluzba/src/gui/GodisnjiProzor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/taksi-sluzba/src/gui/KombinovanaPretragaVozaca.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/taksi-sluzba/src/gui/PronadjeniVozac.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/taksi-sluzba/src/gui/IzvestajiProzor.java" beforeDir="false" afterPath="$PROJECT_DIR$/taksi-sluzba/src/gui/IzvestajiProzor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/taksi-sluzba/src/gui/VozaciTabela.java" beforeDir="false" afterPath="$PROJECT_DIR$/taksi-sluzba/src/gui/VozaciTabela.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/taksi-sluzba/src/taxiSluzba/TaxiSluzba.java" beforeDir="false" afterPath="$PROJECT_DIR$/taksi-sluzba/src/taxiSluzba/TaxiSluzba.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

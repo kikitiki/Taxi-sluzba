@@ -804,7 +804,7 @@ public class TaxiSluzba {
         return sviVozaci;
 
     }
-    
+
     public static float prosecanBrKmPoVoznji(){
         float ukupanBrPredjenihKm = 0;
         for (Voznja voznja: pronadjeneVoznje){
