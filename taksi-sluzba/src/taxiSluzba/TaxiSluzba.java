@@ -20,8 +20,8 @@ public class TaxiSluzba {
     private static List<Korisnik> sviKorisnici = new ArrayList<Korisnik>();
     private static List<Automobil> sviAutomobili = new ArrayList<Automobil>();
     private static List<Voznja> sveVoznje = new ArrayList<Voznja>();
-    private static List idAutomobili  = new ArrayList();
-    private static List<String> korisnickaImena= new ArrayList<>();
+    private static List idAutomobili = new ArrayList();
+    private static List<String> korisnickaImena = new ArrayList<>();
     private static final double CENA_START = 100.0;
     private static final double CENA_PO_KM = 50.0;
 
@@ -39,13 +39,13 @@ public class TaxiSluzba {
         this.korisniciFajl = korisniciFajl;
     }
 
-    public  TaxiSluzba(List<Korisnik> sviKorisnici, List<Automobil> sviAutomobili, List<Voznja> sveVoznje) {
+    public TaxiSluzba(List<Korisnik> sviKorisnici, List<Automobil> sviAutomobili, List<Voznja> sveVoznje) {
         this.sviKorisnici = sviKorisnici;
         this.sviAutomobili = sviAutomobili;
         this.sveVoznje = sveVoznje;
     }
 
-    public List<Korisnik> getSviKorisnici() {
+    public static List<Korisnik> getSviKorisnici() {
         return sviKorisnici;
     }
 
@@ -70,7 +70,7 @@ public class TaxiSluzba {
     }
 
     public void ucitajKorisnike(String nazivFajla) {
-        File file =  new File(nazivFajla);
+        File file = new File(nazivFajla);
 
         try {
             BufferedReader reader = new BufferedReader(new FileReader(file));
@@ -102,13 +102,13 @@ public class TaxiSluzba {
                 if (tipKorisnika.equals(TipKorisnika.MUSTERIJA)) {
                     Korisnik korisnik = new Korisnik(jmbg, korisnickoIme, sifra, ime, prezime, adresa, pol, brojTelefona, tipKorisnika, obrisan);
                     sviKorisnici.add(korisnik);
-                } else if ( tipKorisnika.equals(TipKorisnika.DISPECER) ){
+                } else if (tipKorisnika.equals(TipKorisnika.DISPECER)) {
                     String plataString = splitovano[10];
                     String brojTelefonaLinije = splitovano[11];
                     String odeljenjeString = splitovano[12];
                     Odeljenje odeljenje = Odeljenje.valueOf(odeljenjeString);
                     double plata = Double.parseDouble(plataString);
-                    Korisnik korisnik = new Dispecer(jmbg, korisnickoIme, sifra, ime, prezime, adresa, pol, brojTelefona, plata, brojTelefonaLinije, odeljenje, tipKorisnika, obrisan );
+                    Korisnik korisnik = new Dispecer(jmbg, korisnickoIme, sifra, ime, prezime, adresa, pol, brojTelefona, plata, brojTelefonaLinije, odeljenje, tipKorisnika, obrisan);
                     sviKorisnici.add(korisnik);
                 } else {
                     String brojClanskeKarte = splitovano[10];
@@ -147,12 +147,12 @@ public class TaxiSluzba {
     public void ucitajVoznje(String nazivFajla) {
         File file = new File(nazivFajla);
         try {
-            BufferedReader reader= new BufferedReader(new FileReader(file));
+            BufferedReader reader = new BufferedReader(new FileReader(file));
             String line;
 
             while ((line = reader.readLine()) != null) {
 
-                if(line.equals("")){
+                if (line.equals("")) {
                     break;
                 }
 
@@ -190,7 +190,7 @@ public class TaxiSluzba {
                     }
                 }
 
-                Voznja voznja = new Voznja(id, date,adresaPolaska,adresaDestinacije,statusVoznje,brKm,trajanje, musterija ,vozac, tipKreiraneVoznje, obrisan);
+                Voznja voznja = new Voznja(id, date, adresaPolaska, adresaDestinacije, statusVoznje, brKm, trajanje, musterija, vozac, tipKreiraneVoznje, obrisan);
                 sveVoznje.add(voznja);
             }
         } catch (FileNotFoundException e) {
@@ -208,7 +208,7 @@ public class TaxiSluzba {
             String line;
             while ((line = reader.readLine()) != null) {
 
-                if (line.equals("")){
+                if (line.equals("")) {
                     break;
                 }
 
@@ -271,7 +271,7 @@ public class TaxiSluzba {
         try {
             BufferedWriter writer = new BufferedWriter(new FileWriter(file));
             String zaIspis = "";
-            for (Automobil automobil: sviAutomobili){
+            for (Automobil automobil : sviAutomobili) {
                 zaIspis = zaIspis + automobil.formatirajZaUpisAutomobila() + "\n";
             }
 
@@ -290,7 +290,7 @@ public class TaxiSluzba {
         try {
             BufferedWriter writer = new BufferedWriter(new FileWriter(file));
             String zaIspis = "";
-            for (Voznja voznja :sveVoznje){
+            for (Voznja voznja : sveVoznje) {
                 zaIspis = zaIspis + voznja.formatirajZaUpis() + "\n";
             }
 
@@ -347,6 +347,8 @@ public class TaxiSluzba {
         }
         return null;
     }
+
+
 
     public static Vozac obrisiVozaca(String brojClanskeKarte) {
         for (Korisnik k : sviKorisnici) {
@@ -772,27 +774,46 @@ public class TaxiSluzba {
     }
 
 
-    public List<Vozac> kombinovanaPretraga(String ime, String prezime, Double plata, String automobilID) {
+    public static ArrayList<Vozac> kombinovanaPretraga(String ime, String prezime,Double plataOd, Double plataDo, String automobilID) {
 
-        ArrayList<Vozac> sviVozaci = dobaviVozace();
+        ArrayList<Vozac> sviVozaci = (ArrayList<Vozac>) dobaviVozace();
 
         Iterator<Vozac> it = sviVozaci.iterator();
 
         while(it.hasNext()) {
             Vozac trenutni = it.next();
 
+            // TRUE && TRUE = TRUE
+            // TRUE && FALSE = FALSE
+            // FLASAE && TRUE = FALSE
+            // FALSE && FALSE = FALSE
+
+            // TRUE || TRUE = TRUE
+            // TRUE || FALSE = TRUE
+            // FALSE || TRUE = TRUE
+            // FALSE || FALSE = FALSE
+
             if (!ime.equals("") && !trenutni.getIme().equalsIgnoreCase(ime)) {
                 it.remove();
                 continue;
+
             }
 
             if (!prezime.equals("") && !trenutni.getPrezime().equalsIgnoreCase(prezime)) {
                 it.remove();
+
                 continue;
             }
 
-            if (!(plata == null) && !(trenutni.getPlata() == plata)) {
+            if (!(plataOd == null) && (trenutni.getPlata() < plataOd)) {
                 it.remove();
+
+                continue;
+            }
+
+            if (!(plataDo == null) && (trenutni.getPlata() > plataDo)) {
+                it.remove();
+
                 continue;
             }
 
@@ -922,8 +943,4 @@ public class TaxiSluzba {
             }
         }return voznje;
     }
-
-
-
-
 }

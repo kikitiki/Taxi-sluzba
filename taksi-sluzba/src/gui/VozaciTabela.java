@@ -43,7 +43,7 @@ public class VozaciTabela extends JFrame {
         add(mainToolbar, BorderLayout.NORTH);
         mainToolbar.setFloatable(false);
 
-        String[] zaglavlja = new String[]{"Tip Korisnika","Korisnicko ime","Ime","Prezime","JMBG","Adresa","Pol","Broj telefeona","Plata"};
+        String[] zaglavlja = new String[]{"Tip Korisnika","Korisnicko ime","Ime","Prezime","JMBG","Adresa","Pol","Broj telefeona","Plata","Automobil"};
         Object[][] sadrzaj = new Object[TaxiSluzba.dobaviVozace().size()][zaglavlja.length];
 
         for (int i =0 ;  i < TaxiSluzba.dobaviVozace().size(); i++){
@@ -57,6 +57,7 @@ public class VozaciTabela extends JFrame {
             sadrzaj[i][6] = vozac.getPol();
             sadrzaj[i][7] = vozac.getBrojTelefona();
             sadrzaj[i][8] = vozac.getPlata();
+            sadrzaj[i][9] = vozac.getTaxi();
         }
 
        tableModel = new DefaultTableModel(sadrzaj,zaglavlja);
@@ -139,7 +140,7 @@ public class VozaciTabela extends JFrame {
         btnKombinovanaPretraga.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                KombinovanaPretragaVozaca kombinovanaPretragaVozaca= new KombinovanaPretragaVozaca();
+                KombinovanaPretragaVozaca kombinovanaPretragaVozaca= new KombinovanaPretragaVozaca(taxiSluzba);
                 kombinovanaPretragaVozaca.setVisible(true);
             }
         });

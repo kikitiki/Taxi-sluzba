@@ -169,10 +169,11 @@ public class Taxi_Main {
         System.out.println("Kombinovana pretraga");
 
         System.out.println("Rezultati pretrage: ");
-        List<Vozac> rezultati = taxiSluzba.kombinovanaPretraga("", "", null, "");
-        for (Vozac v : rezultati) {
-            System.out.println(v);
-        }
+//        ArrayList<Vozac> rezultati = taxiSluzba.kombinovanaPretraga("ana", "");
+//        System.out.println(taxiSluzba.kombinovanaPretraga("ana", ""));
+//        for (Vozac v : rezultati) {
+//            System.out.println(rezultati);
+//        }
     }
 
 

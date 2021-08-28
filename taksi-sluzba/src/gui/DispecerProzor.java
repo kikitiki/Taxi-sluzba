@@ -11,7 +11,6 @@ public class DispecerProzor extends JFrame {
     private JButton vozaci = new JButton("Vozaci");
     private JButton voznje = new JButton("Voznje");
     private JButton izvestaji = new JButton("Izvestaji");
-    private JButton pretragaVozaca = new JButton("Pretraga vozaca");
     private JButton btnLogout = new JButton("Logout");
 
     private TaxiSluzba taxiSluzba;
@@ -35,7 +34,6 @@ public class DispecerProzor extends JFrame {
         mainMenu.add(voznje);
         mainMenu.add(izvestaji);
         mainMenu.add(btnLogout);
-        mainMenu.add(pretragaVozaca);
     }
 
     private void initActions(){
