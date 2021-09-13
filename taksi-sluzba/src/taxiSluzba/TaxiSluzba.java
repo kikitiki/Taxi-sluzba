@@ -418,26 +418,7 @@ public class TaxiSluzba {
     }
 
 
-    public Vozac izmeniVozaca(String jmbg,String korisnickoIme,String lozinka,String ime, String prezime,String adresa,Pol pol,String brojtelefona,double plata,Automobil taxi,String brojClanskeKarte) {
-        Vozac vozacKogMenjamo = null;
-        for (Korisnik k : sviKorisnici) {
-            if (k.getJmbg().equalsIgnoreCase(k.getJmbg())) {
-                if (k.getTipKorisnika().equals(TipKorisnika.VOZAC)) {
-                    vozacKogMenjamo = (Vozac) k;
-                    break;
-                }
-            }
-        }
-        vozacKogMenjamo.setLozinka(lozinka);
-        vozacKogMenjamo.setAdresa(adresa);
-        vozacKogMenjamo.setBrojTelefona(brojtelefona);
-        vozacKogMenjamo.setPlata(plata);
-        vozacKogMenjamo.setBrojClanskeKarte(brojClanskeKarte);
-        vozacKogMenjamo.setTaxi(taxi);
-        sacuvajKorisnike(korisniciFajl);
 
-        return vozacKogMenjamo;
-    }
 
     //CRUD ZA DISPECERA
     public void prikaziDispecere() {
@@ -507,63 +488,6 @@ public class TaxiSluzba {
     }
 
 
-    public Automobil binarnaPretragaAutomobilaPoId(List<Automobil> automobili,int levi,int desni,int id){
-        if (desni >= levi){
-            int sredina = levi + (desni - levi)/2;
-            Automobil trenutni = automobili.get(sredina);
-            if (trenutni.getId() == id){
-                return trenutni;
-            }
-
-            if (trenutni.getId() < id){
-                return binarnaPretragaAutomobilaPoId(automobili,sredina +1,desni,id) ;
-            }
-            if (trenutni.getId() > id){
-                return binarnaPretragaAutomobilaPoId(automobili,levi,sredina -1,id);
-            }
-        }
-        return null;
-    }
-
-
-    public Voznja binarnaPretragaVoznjePoId(List<Voznja> voznje,int levi,int desni,int id){
-        if (desni >= levi){
-            int sredina = levi + (desni - levi)/2;
-            Voznja trenutna = voznje.get(sredina);
-            if (trenutna.getId() == id){
-                return trenutna;
-            }
-
-            if (trenutna.getId() < id){
-                return binarnaPretragaVoznjePoId(voznje,sredina +1,desni,id) ;
-            }
-            if (trenutna.getId() > id){
-                return binarnaPretragaVoznjePoId(voznje,levi,sredina -1,id);
-            }
-        }
-        return null;
-    }
-
-
-
-
-    public Korisnik binarnaPretragaKorisnikaPoStringu(List<Korisnik> korisnici,int levi,int desni,String ime){
-        if (desni >= levi){
-            int sredina = levi +(desni - levi)/2;
-            Korisnik trenutni = korisnici.get(sredina);
-            if (trenutni.getKorisnickoIme().equalsIgnoreCase(ime)){
-                return trenutni;
-            }
-
-            if (trenutni.getKorisnickoIme().compareToIgnoreCase(ime) < 0){
-                return binarnaPretragaKorisnikaPoStringu(korisnici, sredina +1,desni,ime) ;
-            }
-            if (trenutni.getKorisnickoIme().compareToIgnoreCase(ime) > 0){
-                return binarnaPretragaKorisnikaPoStringu(korisnici,levi,sredina -1,ime);
-            }
-        }
-        return null;
-    }
 
 
 
@@ -631,15 +555,7 @@ public class TaxiSluzba {
         return voznjePutemApliacije;
     }
 
-    public List<Voznja> dobaviSveVoznje() {
-        List<Voznja> sveVoznje = new ArrayList<Voznja>();
-        for (Voznja v : sveVoznje) {
-            if (!v.isObrisan()) {
-                sveVoznje.add(v);
-            }
-        }
-        return sveVoznje;
-    }
+
 
     public List<Voznja> voznjeVozaca(String korisnickoIme){
         System.out.println("korisnicko ime: " + korisnickoIme);
@@ -693,13 +609,7 @@ public class TaxiSluzba {
         return pronadjenVozac;
     }
 
-    public static List<String> pronadjiVozacePoKorisnickomImenu() {
 
-        for (Vozac v: TaxiSluzba.dobaviVozace()) {
-            korisnickaImena.add(v.getKorisnickoIme());
-            }
-        return korisnickaImena;
-    }
 
 
     public Korisnik pronadjiMusterijuPoKorisnickomImenu(String korisnickoIme) {
@@ -942,5 +852,64 @@ public class TaxiSluzba {
                 voznje.add(voznja);
             }
         }return voznje;
+    }
+
+
+    public Automobil binarnaPretragaAutomobilaPoId(List<Automobil> automobili,int levi,int desni,int id){
+        if (desni >= levi){
+            int sredina = levi + (desni - levi)/2;
+            Automobil trenutni = automobili.get(sredina);
+            if (trenutni.getId() == id){
+                return trenutni;
+            }
+
+            if (trenutni.getId() < id){
+                return binarnaPretragaAutomobilaPoId(automobili,sredina +1,desni,id) ;
+            }
+            if (trenutni.getId() > id){
+                return binarnaPretragaAutomobilaPoId(automobili,levi,sredina -1,id);
+            }
+        }
+        return null;
+    }
+
+
+    public Voznja binarnaPretragaVoznjePoId(List<Voznja> voznje,int levi,int desni,int id){
+        if (desni >= levi){
+            int sredina = levi + (desni - levi)/2;
+            Voznja trenutna = voznje.get(sredina);
+            if (trenutna.getId() == id){
+                return trenutna;
+            }
+
+            if (trenutna.getId() < id){
+                return binarnaPretragaVoznjePoId(voznje,sredina +1,desni,id) ;
+            }
+            if (trenutna.getId() > id){
+                return binarnaPretragaVoznjePoId(voznje,levi,sredina -1,id);
+            }
+        }
+        return null;
+    }
+
+
+
+
+    public Korisnik binarnaPretragaKorisnikaPoStringu(List<Korisnik> korisnici,int levi,int desni,String ime){
+        if (desni >= levi){
+            int sredina = levi +(desni - levi)/2;
+            Korisnik trenutni = korisnici.get(sredina);
+            if (trenutni.getKorisnickoIme().equalsIgnoreCase(ime)){
+                return trenutni;
+            }
+
+            if (trenutni.getKorisnickoIme().compareToIgnoreCase(ime) < 0){
+                return binarnaPretragaKorisnikaPoStringu(korisnici, sredina +1,desni,ime) ;
+            }
+            if (trenutni.getKorisnickoIme().compareToIgnoreCase(ime) > 0){
+                return binarnaPretragaKorisnikaPoStringu(korisnici,levi,sredina -1,ime);
+            }
+        }
+        return null;
     }
 }

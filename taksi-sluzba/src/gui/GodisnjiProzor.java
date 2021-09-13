@@ -34,15 +34,16 @@ public class GodisnjiProzor extends JFrame {
 
     private void initActions(){
         btnPretraga.addActionListener(e -> {
-            try{
-                int broj1 = Integer.parseInt(txtGodina.getText());
+            int broj1;
+            try {
+                broj1 = Integer.parseInt(txtGodina.getText());
                 ArrayList<Voznja> pronadjiVoznju = TaxiSluzba.godisnjiIzvestaj(broj1);
                 PronadjeneVoznje pronadjeneVoznje = new PronadjeneVoznje(pronadjiVoznju);
                 pronadjeneVoznje.setVisible(true);
-            }
-            catch(DateTimeParseException ex) {
-                System.out.println(ex.getMessage());
-            };
+            } catch (DateTimeParseException ex) {
+               System.out.println(ex.getMessage());
+
+            } ;
         });
     }
 }

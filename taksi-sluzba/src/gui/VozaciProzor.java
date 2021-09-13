@@ -53,5 +53,14 @@ public class VozaciProzor extends JFrame {
             }
         });
 
+        aukcija.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Aukcija aukcija = new Aukcija();
+                aukcija.setVisible(true);
+            }
+        });
+
+
     }
 }

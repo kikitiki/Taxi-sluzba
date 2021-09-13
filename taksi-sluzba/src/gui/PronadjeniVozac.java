@@ -43,8 +43,6 @@ public class PronadjeniVozac extends JFrame {
 
 
     private void initMenu(){
-//        mainToolbar.add(btnDelete);
-//       mainToolbar.add(btnEdit);
         add(mainToolbar, BorderLayout.NORTH);
         mainToolbar.setFloatable(false);
 
