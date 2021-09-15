@@ -40,8 +40,6 @@ public class PronadjeniVozac extends JFrame {
         initActions();
     }
 
-
-
     private void initMenu(){
         add(mainToolbar, BorderLayout.NORTH);
         mainToolbar.setFloatable(false);

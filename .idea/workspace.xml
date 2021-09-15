@@ -2,13 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="acbcea89-9652-4c59-b1c6-1d851b140c67" name="Default Changelist" comment="proba">
-      <change afterPath="$PROJECT_DIR$/taksi-sluzba/src/gui/Aukcija.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/taksi-sluzba/src/gui/VremeAukcija.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/taksi-sluzba/src/gui/GodisnjiProzor.java" beforeDir="false" afterPath="$PROJECT_DIR$/taksi-sluzba/src/gui/GodisnjiProzor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/taksi-sluzba/src/gui/LoginProzor.java" beforeDir="false" afterPath="$PROJECT_DIR$/taksi-sluzba/src/gui/LoginProzor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/taksi-sluzba/src/gui/OdbijVzonjuForma.java" beforeDir="false" afterPath="$PROJECT_DIR$/taksi-sluzba/src/gui/OdbijVzonjuForma.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/taksi-sluzba/fajlovi/voznje.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/taksi-sluzba/fajlovi/voznje.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/taksi-sluzba/src/fajlovi/voznje.txt" beforeDir="false" afterPath="$PROJECT_DIR$/taksi-sluzba/src/fajlovi/voznje.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/taksi-sluzba/src/gui/Aukcija.java" beforeDir="false" afterPath="$PROJECT_DIR$/taksi-sluzba/src/gui/Aukcija.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/taksi-sluzba/src/gui/PronadjeniVozac.java" beforeDir="false" afterPath="$PROJECT_DIR$/taksi-sluzba/src/gui/PronadjeniVozac.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/taksi-sluzba/src/gui/VozaciProzor.java" beforeDir="false" afterPath="$PROJECT_DIR$/taksi-sluzba/src/gui/VozaciProzor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/taksi-sluzba/src/taxiSluzba/TaxiSluzba.java" beforeDir="false" afterPath="$PROJECT_DIR$/taksi-sluzba/src/taxiSluzba/TaxiSluzba.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -144,10 +143,5 @@
         </breakpoint>
       </breakpoints>
     </breakpoint-manager>
-    <watches-manager>
-      <configuration name="Application">
-        <watch expression="automobilID" />
-      </configuration>
-    </watches-manager>
   </component>
 </project>

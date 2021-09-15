@@ -555,6 +555,16 @@ public class TaxiSluzba {
         return voznjePutemApliacije;
     }
 
+    public static List<Voznja> dobaviVoznjeKreiraneTelefonAukcija() {
+        List<Voznja> voznjePutemApliacije = new ArrayList<Voznja>();
+        for (Voznja v : sveVoznje) {
+            if (v.getTipKreiraneVoznje().equals(TipKreiraneVoznje.PUTEM_TELEFONA) && !v.isObrisan()&& v.getStatus().equals(StatusVoznje.KREIRANA)) {
+                voznjePutemApliacije.add(v);
+            }
+        }
+        return voznjePutemApliacije;
+    }
+
 
 
     public List<Voznja> voznjeVozaca(String korisnickoIme){
@@ -643,7 +653,7 @@ public class TaxiSluzba {
         return pronadjenaVoznja;
     }
 
-    public  Voznja odbijVoznju(int id) {
+    public static Voznja odbijVoznju(int id) {
         Voznja pronadjenaVoznja = binarnaPretragaVoznjePoId(sveVoznje,0,sveVoznje.size()-1,id);
         if (pronadjenaVoznja == null){
             System.out.println("Ne postoji voznja sa unetim id");
@@ -874,7 +884,7 @@ public class TaxiSluzba {
     }
 
 
-    public Voznja binarnaPretragaVoznjePoId(List<Voznja> voznje,int levi,int desni,int id){
+    public static Voznja binarnaPretragaVoznjePoId(List<Voznja> voznje, int levi, int desni, int id){
         if (desni >= levi){
             int sredina = levi + (desni - levi)/2;
             Voznja trenutna = voznje.get(sredina);
