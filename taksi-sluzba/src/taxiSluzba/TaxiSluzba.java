@@ -703,15 +703,6 @@ public class TaxiSluzba {
         while(it.hasNext()) {
             Vozac trenutni = it.next();
 
-            // TRUE && TRUE = TRUE
-            // TRUE && FALSE = FALSE
-            // FLASAE && TRUE = FALSE
-            // FALSE && FALSE = FALSE
-
-            // TRUE || TRUE = TRUE
-            // TRUE || FALSE = TRUE
-            // FALSE || TRUE = TRUE
-            // FALSE || FALSE = FALSE
 
             if (!ime.equals("") && !trenutni.getIme().equalsIgnoreCase(ime)) {
                 it.remove();
@@ -795,15 +786,6 @@ public class TaxiSluzba {
             }
         }return voznje;
     }
-
-//    public static ArrayList<Voznja> VoznjeTelefonom(){
-//        ArrayList<Voznja> voznje = new ArrayList<Voznja>();
-//        for (Voznja porudzbina: pronadjeneVoznje){
-//            if (porudzbina.getTipPorudzbine().equals(TipPorudzbine.TELEFON)){
-//                voznje.add(porudzbina);
-//            }
-//        }return voznje;
-//    }
 
     public static ArrayList<Voznja> dnevniIzvestaj(LocalDateTime dan) {
         ArrayList<Voznja> pronadjeneVoznje = new ArrayList<>();

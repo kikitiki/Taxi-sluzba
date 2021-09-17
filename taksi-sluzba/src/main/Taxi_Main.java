@@ -83,8 +83,8 @@ public class Taxi_Main {
             System.out.println(a.getId());
         }
 
-        testirajKombinovanuPretragu(taxiSluzba);
-        testirajIzvestaje(taxiSluzba);
+        //testirajKombinovanuPretragu(taxiSluzba);
+        //testirajIzvestaje(taxiSluzba);
 
 
 
@@ -94,54 +94,54 @@ public class Taxi_Main {
         lp.setVisible(true);
 
         testirajKreiranjeVozaca(taxiSluzba, scanner);
-        testirajKreiranjeDispecera(taxiSluzba, scanner);
+        //testirajKreiranjeDispecera(taxiSluzba, scanner);
         testirajKreiranjeVoznje(taxiSluzba, scanner);
         testirajIzmenuVoznje(taxiSluzba, scanner);
         testirajDodeljivanjeVoznjeVozacu(taxiSluzba, scanner);
-        prikazDispecera(taxiSluzba);
-        prikazVozaca(taxiSluzba);
+        //prikazDispecera(taxiSluzba);
+       // prikazVozaca(taxiSluzba);
         brisanjeVozaca(taxiSluzba);
-        brisanjeDispecera(taxiSluzba);
+        //brisanjeDispecera(taxiSluzba);
         scanner.close();
 
 
     }
 
+//
+//    public static void testirajIzvestaje(TaxiSluzba taxiSluzba) {
+//        LocalDateTime date = LocalDateTime.of(2021, 4, 29, 12, 12);
+//        taxiSluzba.godisnjiIzvestaj(2021);
+//        taxiSluzba.dnevniIzvestaj(date);
+//        taxiSluzba.mesecniIzvestaj(4, 2021);
+//        taxiSluzba.nedeljniIzvestaj(18, 2021);
+//
+//    }
+//
+//    public static void ispisiSvePodatke(TaxiSluzba taxiSluzba) {
+//        for (Korisnik korisnik: taxiSluzba.getSviKorisnici()){
+//            System.out.println(korisnik + "\n");
+//        }
+//        for (Automobil automobil: taxiSluzba.getSviAutomobili()){
+//            System.out.println(automobil + "\n");
+//        }
+//
+//        for (Voznja voznja : taxiSluzba.getSveVoznje()) {
+//            System.out.println(voznja + "\n");
+//            voznja.formatirajZaUpis();
+//        }
+//    }
 
-    public static void testirajIzvestaje(TaxiSluzba taxiSluzba) {
-        LocalDateTime date = LocalDateTime.of(2021, 4, 29, 12, 12);
-        taxiSluzba.godisnjiIzvestaj(2021);
-        taxiSluzba.dnevniIzvestaj(date);
-        taxiSluzba.mesecniIzvestaj(4, 2021);
-        taxiSluzba.nedeljniIzvestaj(18, 2021);
 
-    }
-
-    public static void ispisiSvePodatke(TaxiSluzba taxiSluzba) {
-        for (Korisnik korisnik: taxiSluzba.getSviKorisnici()){
-            System.out.println(korisnik + "\n");
-        }
-        for (Automobil automobil: taxiSluzba.getSviAutomobili()){
-            System.out.println(automobil + "\n");
-        }
-
-        for (Voznja voznja : taxiSluzba.getSveVoznje()) {
-            System.out.println(voznja + "\n");
-            voznja.formatirajZaUpis();
-        }
-    }
-
-
-    public static void prikazDispecera(TaxiSluzba taxiSluzba){
-        System.out.println("Prikaz dispecera:");
-        taxiSluzba.prikaziDispecere();
-    }
-
-    public static void prikazVozaca(TaxiSluzba taxiSluzba){
-        System.out.println("Prikaz vozaca:");
-        taxiSluzba.prikaziVozace();
-
-    }
+//    public static void prikazDispecera(TaxiSluzba taxiSluzba){
+//        System.out.println("Prikaz dispecera:");
+//        taxiSluzba.prikaziDispecere();
+//    }
+//
+//    public static void prikazVozaca(TaxiSluzba taxiSluzba){
+//        System.out.println("Prikaz vozaca:");
+//        taxiSluzba.prikaziVozace();
+//
+//    }
 
     public static void brisanjeVozaca(TaxiSluzba taxiSluzba){
         System.out.println("Brisanje vozaca......");
@@ -154,27 +154,27 @@ public class Taxi_Main {
         taxiSluzba.prikaziVozace();
     }
 
-    public static void brisanjeDispecera(TaxiSluzba taxiSluzba){
-        System.out.println("Brisanje dispecera");
-        Dispecer obrisanDispecer = taxiSluzba.obrisiDispicera("9999999999");
-        if (obrisanDispecer != null) {
-            System.out.println("Obrisali smo dispecera: " + obrisanDispecer.getJmbg());
-        } else {
-            System.out.println("Ne postoji korisnik sa datim jmbgom");
-        }
-        taxiSluzba.prikaziDispecere();
-    }
-
-    public static void testirajKombinovanuPretragu(TaxiSluzba taxiSluzba) {
-        System.out.println("Kombinovana pretraga");
-
-        System.out.println("Rezultati pretrage: ");
-//        ArrayList<Vozac> rezultati = taxiSluzba.kombinovanaPretraga("ana", "");
-//        System.out.println(taxiSluzba.kombinovanaPretraga("ana", ""));
-//        for (Vozac v : rezultati) {
-//            System.out.println(rezultati);
+//    public static void brisanjeDispecera(TaxiSluzba taxiSluzba){
+//        System.out.println("Brisanje dispecera");
+//        Dispecer obrisanDispecer = taxiSluzba.obrisiDispicera("9999999999");
+//        if (obrisanDispecer != null) {
+//            System.out.println("Obrisali smo dispecera: " + obrisanDispecer.getJmbg());
+//        } else {
+//            System.out.println("Ne postoji korisnik sa datim jmbgom");
 //        }
-    }
+//        taxiSluzba.prikaziDispecere();
+//    }
+//
+////    public static void testirajKombinovanuPretragu(TaxiSluzba taxiSluzba) {
+////        System.out.println("Kombinovana pretraga");
+////
+////        System.out.println("Rezultati pretrage: ");
+////        ArrayList<Vozac> rezultati = taxiSluzba.kombinovanaPretraga("ana", "");
+////        System.out.println(taxiSluzba.kombinovanaPretraga("ana", ""));
+////        for (Vozac v : rezultati) {
+////            System.out.println(rezultati);
+//  //      }
+//    }
 
 
 
@@ -207,55 +207,55 @@ public class Taxi_Main {
         taxiSluzba.kreirajVoznju(datum1, adresaPolaska, adresaDestinacije, brKM,trajanjeVoznje, pronadjenaMusterija);
     }
 
-    public static void testirajKreiranjeDispecera(TaxiSluzba taxiSluzba, Scanner scanner) {
-        System.out.println("KREIRANJE DISPECERA");
-
-        System.out.println("Unesite odeljenje: ");
-        String odeljenjeString = scanner.nextLine().toUpperCase();
-        Odeljenje odeljenje =Odeljenje.valueOf(odeljenjeString);
-
-
-        System.out.println("Unesite pol: ");
-        String polString1 = scanner.nextLine().toUpperCase();
-        Pol pol1 = Pol.valueOf(polString1);
-
-        System.out.println("Unesite jmbg: ");
-        String jmbg1 = scanner.nextLine();
-
-        System.out.println("Unesite korisnicko ime: ");
-        String korisnickoIme1 = scanner.nextLine();
-
-        System.out.println("Unesite sifru: ");
-        String sifra1 = scanner.nextLine();
-
-        System.out.println("Unesite  ime: ");
-        String ime1 = scanner.nextLine();
-
-        System.out.println("Unesite prezime: ");
-        String prezime1 = scanner.nextLine();
-
-        System.out.println("Unesite adresa: ");
-        String adresa1 = scanner.nextLine();
-
-        System.out.println("Unesite broj telefona: ");
-        String brojTelefona1 = scanner.nextLine();
-
-        System.out.println("Unesite platu: ");
-        String plataString1 = scanner.nextLine();
-        Double plata1 = Double.parseDouble(plataString1);
-
-        System.out.println("Unesite broj telfonske linije: ");
-        String brojTelefonLinije= scanner.nextLine();
-
-        Dispecer kreiraniDispecer = taxiSluzba.kreirajDispecera(jmbg1,korisnickoIme1,sifra1,ime1,prezime1,adresa1,pol1,brojTelefona1,plata1,brojTelefonLinije,odeljenje);
-        if (kreiraniDispecer == null){
-            System.out.println("Dispecer vec postoji");
-        }
-
-        taxiSluzba.prikaziDispecere();
-        taxiSluzba.sacuvajKorisnike(KORISNICI_FAJL);
-
-    }
+//    public static void testirajKreiranjeDispecera(TaxiSluzba taxiSluzba, Scanner scanner) {
+//        System.out.println("KREIRANJE DISPECERA");
+//
+//        System.out.println("Unesite odeljenje: ");
+//        String odeljenjeString = scanner.nextLine().toUpperCase();
+//        Odeljenje odeljenje =Odeljenje.valueOf(odeljenjeString);
+//
+//
+//        System.out.println("Unesite pol: ");
+//        String polString1 = scanner.nextLine().toUpperCase();
+//        Pol pol1 = Pol.valueOf(polString1);
+//
+//        System.out.println("Unesite jmbg: ");
+//        String jmbg1 = scanner.nextLine();
+//
+//        System.out.println("Unesite korisnicko ime: ");
+//        String korisnickoIme1 = scanner.nextLine();
+//
+//        System.out.println("Unesite sifru: ");
+//        String sifra1 = scanner.nextLine();
+//
+//        System.out.println("Unesite  ime: ");
+//        String ime1 = scanner.nextLine();
+//
+//        System.out.println("Unesite prezime: ");
+//        String prezime1 = scanner.nextLine();
+//
+//        System.out.println("Unesite adresa: ");
+//        String adresa1 = scanner.nextLine();
+//
+//        System.out.println("Unesite broj telefona: ");
+//        String brojTelefona1 = scanner.nextLine();
+//
+//        System.out.println("Unesite platu: ");
+//        String plataString1 = scanner.nextLine();
+//        Double plata1 = Double.parseDouble(plataString1);
+//
+//        System.out.println("Unesite broj telfonske linije: ");
+//        String brojTelefonLinije= scanner.nextLine();
+//
+//        Dispecer kreiraniDispecer = taxiSluzba.kreirajDispecera(jmbg1,korisnickoIme1,sifra1,ime1,prezime1,adresa1,pol1,brojTelefona1,plata1,brojTelefonLinije,odeljenje);
+//        if (kreiraniDispecer == null){
+//            System.out.println("Dispecer vec postoji");
+//        }
+//
+//        taxiSluzba.prikaziDispecere();
+//        taxiSluzba.sacuvajKorisnike(KORISNICI_FAJL);
+//
+//    }
 
     public static void testirajKreiranjeVozaca(TaxiSluzba taxiSluzba, Scanner scanner) {
         System.out.println("KREIRANJE VOZACA");
@@ -389,3 +389,12 @@ public class Taxi_Main {
         taxiSluzba.odbijVoznju(id);
     }
 }
+// TRUE && TRUE = TRUE
+// TRUE && FALSE = FALSE
+// FLASAE && TRUE = FALSE
+// FALSE && FALSE = FALSE
+
+// TRUE || TRUE = TRUE
+// TRUE || FALSE = TRUE
+// FALSE || TRUE = TRUE
+// FALSE || FALSE = FALSE

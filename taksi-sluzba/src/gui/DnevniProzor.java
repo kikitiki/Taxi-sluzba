@@ -15,7 +15,7 @@ public class DnevniProzor extends JFrame {
     int broj = 15;
 
         private JLabel lblGodina = new JLabel("Unesite datum (2021-04-29T19:57) ");
-    private JTextField godina = new JTextField(broj);
+        private JTextField godina = new JTextField(broj);
 
 
 

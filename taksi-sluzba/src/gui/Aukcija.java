@@ -39,7 +39,7 @@ public class Aukcija extends JFrame {
         mainToolbar.add(btnPrihvati);
         add(mainToolbar, BorderLayout.NORTH);
         mainToolbar.setFloatable(false);
-        
+
         String[] zaglavlja = new String[]{"Id", "Datum kreiranja", "Adresa polaska", "Adresa Destinacije", "Status voznje", "Broj km", "Trajanje voznje", "Korisnik", "Vozac", "Tip kreirane voznje"};
         Object[][] sadrzaj = new Object[TaxiSluzba.dobaviVoznjeKreiraneTelefonAukcija().size()][zaglavlja.length];
 
@@ -93,7 +93,6 @@ public class Aukcija extends JFrame {
                     if (statusVoznje.equals("KREIRANA")){
                         VremeAukcija vremeAukcija = new VremeAukcija();
                         vremeAukcija.setVisible(true);
-
                     }else {
                         JOptionPane.showMessageDialog(null, "Molimo izaberite red ",
                                 "Greska", JOptionPane.WARNING_MESSAGE);
