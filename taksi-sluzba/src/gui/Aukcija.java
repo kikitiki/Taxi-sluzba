@@ -1,5 +1,6 @@
 package gui;
 
+import korisnici.Vozac;
 import net.miginfocom.swing.MigLayout;
 import taxiSluzba.TaxiSluzba;
 import voznja.Voznja;
@@ -19,13 +20,14 @@ public class Aukcija extends JFrame {
      private JButton btnPrihvati = new JButton("Prihvati aukciju");
 
     private TaxiSluzba taxiSluzba;
-    private Voznja voznja;
+    private Vozac vozac;
 
     private DefaultTableModel tableModel;
     private JTable Aukcija;
 
-    public Aukcija(){
-       // this.taxiSluzba= taxiSluzba;
+    public Aukcija(TaxiSluzba taxiSluzba, Vozac ulogovani){
+        this.taxiSluzba= taxiSluzba;
+        this.vozac = ulogovani;
         setTitle("Aukcija");
         setSize(500, 300);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
@@ -91,7 +93,7 @@ public class Aukcija extends JFrame {
                     Voznja voznja = TaxiSluzba.pronadjiVoznjuPoID(id);
                     String statusVoznje = (voznja.getStatus()).toString();
                     if (statusVoznje.equals("KREIRANA")){
-                        VremeAukcija vremeAukcija = new VremeAukcija();
+                        VremeAukcija vremeAukcija = new VremeAukcija(voznja,vozac);
                         vremeAukcija.setVisible(true);
                     }else {
                         JOptionPane.showMessageDialog(null, "Molimo izaberite red ",

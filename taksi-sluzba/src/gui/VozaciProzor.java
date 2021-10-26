@@ -1,6 +1,7 @@
 package gui;
 
 import korisnici.Korisnik;
+import korisnici.Vozac;
 import taxiSluzba.TaxiSluzba;
 
 import javax.swing.*;
@@ -56,7 +57,7 @@ public class VozaciProzor extends JFrame {
         aukcija.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Aukcija aukcija = new Aukcija();
+                Aukcija aukcija = new Aukcija(taxiSluzba, (Vozac) ulogovaniKorisnik);
                 aukcija.setVisible(true);
             }
         });

@@ -10,7 +10,7 @@ import java.util.List;
 
 public class KombinovanaPretragaVozaca extends JFrame {
    int broj=20;
-    private JLabel lblKorisnickiIme = new JLabel("Pretrazite vozaca po korisnickom imenu: ");
+    private JLabel lblKorisnickiIme = new JLabel("Pretrazite vozaca po imenu: ");
     private  JTextField txtIme = new JTextField(broj);
     private JLabel lblKorisnickoPrezime = new JLabel("Pretrazite vozaca po prezimenu: ");
     private  JTextField txtPrezime = new JTextField(broj);
